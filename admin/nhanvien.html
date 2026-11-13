@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quản lý Nhân Viên</title>
+  <link rel="stylesheet" href="./admincss/cssforalladmin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <header>
+    <div class="user-menu">
+      Hải
+      <i class="fa-solid fa-sort-down"></i>
+      <div class="dropdown">
+        <a href="#">Đăng xuất</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav>
+      <a href="admin.html" ><i class="fa-solid fa-user" style="font-size:0.8rem"></i>Thông tin tài khoản</a>
+      <a href="admin-order.html"><i class="fa-solid fa-box-open" style="font-size:0.6rem"></i>Quản lý đơn đặt hàng</a>
+      <a href="admin-loaisp.html"><i class="fa-solid fa-tags" style="font-size:small"></i>Quản lý sản phẩm</a>
+      <a href="thongke.html"><i class="fa-solid fa-chart-line" style="font-size:small"></i>Thống kê bán hàng</a>
+      <a href="hoadonnhap.html"><i class="fa-solid fa-file-invoice" style="font-size:1.1rem"></i>Hóa đơn nhập</a>
+      <a href="nhacungcap.html"><i class="fa-solid fa-truck" style="font-size:0.7rem"></i>Nhà cung cấp</a>
+      <a href="khachhang.html"><i class="fa-solid fa-user-friends" style="font-size:0.7rem"></i>Khách hàng</a>
+      <a href="nhanvien.html" class="active"><i class="fa-solid fa-user-tie" style="font-size:0.9rem"></i>Nhân viên</a>
+      <a href="#"><i class="fa-solid fa-blog" style="font-size:small"></i>Blog</a>
+    </nav>
+
+    <div class="content">
+      <h2>Danh sách Nhân Viên</h2>
+
+      <div class="filter-bar">
+        <input type="text" placeholder="Tìm theo tên hoặc mã nhân viên...">
+        <button class="btn btn-add" onclick="moMenu()">+ Thêm nhân viên</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Mã NV</th>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>SĐT</th>
+            <th>Địa chỉ</th>
+            <th>Chức vụ</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="staff-table">
+          <tr>
+            <td>1</td>
+            <td>NV001</td>
+            <td>Lê Thị B</td>
+            <td>lethib@example.com</td>
+            <td>0911222333</td>
+            <td>TP. HCM</td>
+            <td>Quản lý</td>
+            <td>
+              <button class="btn btn-edit" onclick="moMenu('NV001', 'Lê Thị B', 'lethib@example.com', '0911222333', 'TP. HCM', 'Quản lý')"><i class="fas fa-pen"></i></button>
+              <button class="btn btn-delete"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button><<</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>>></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="staffModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="dongMenu()">x</span>
+      <h3 id="modalTitle">Thêm nhân viên</h3>
+      <input type="text" id="staffId" placeholder="Mã nhân viên">
+      <input type="text" id="staffName" placeholder="Tên nhân viên">
+      <input type="email" id="staffEmail" placeholder="Email">
+      <input type="text" id="staffPhone" placeholder="Số điện thoại">
+      <input type="text" id="staffAddress" placeholder="Địa chỉ">
+      <select id="staffRole">
+        <option value="">-- Chọn chức vụ --</option>
+        <option value="Quản lý">Quản lý</option>
+        <option value="Nhân viên bán hàng">Nhân viên bán hàng</option>
+        <option value="Kho">Kho</option>
+      </select>
+      <div class="modal-buttons">
+        <button class="btn btn-add" onclick="luuNhanVien()">Lưu</button>
+        <button class="btn btn-delete" onclick="dongMenu()">Hủy</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="adminjs/admin.js"></script>
+  <script src="adminjs/nhanvien.js"></script>
+</body>
+
+</html>

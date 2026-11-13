@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Blog chi tiết
+    </title>
+    <link rel="stylesheet" href="css/cssforall.css">
+    <link rel="stylesheet" href="css/blogdetail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/store.css">
+</head>
+
+<body>
+   <!-- header -->
+    <header class="row">
+        <div class="header-top row">
+            <div class="header-top-img">
+                <img src="img/img_main/chuong.webp" alt="">
+            </div>
+            <p>MIỄN PHÍ VẬN CHUYỂN ĐƠN HÀNG TỪ 299K</p>
+        </div>
+        <div class="header-mid">
+            <!-- CONTAINER DÙNG ĐỂ CĂN LỀ -->
+            <div class="container row">
+                <!-- end CONTAINER DÙNG ĐỂ CĂN LỀ -->
+                <a href="index.html" class="header-mid-logo">
+                    <img src="img/img_main/logochinh.jpg" alt="">
+                </a>
+                <div class="header-mid-search">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm">
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+                <!-- Menubar ẩn hiện -->
+                <div class="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <!-- Menubar ẩn hiện -->
+                <div class="header-mid-last">
+                    <!-- xem vị trí cửa hàng -->
+                    <div class="location">
+                        <a href="#">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                    </div>
+                    <!-- end xem vị trí cửa hàng -->
+
+                    <!-- FORM ĐĂNG NHẬP -->
+                    <div class="login">
+                        <p><i class="fa-solid fa-person"></i></p>
+                        <div class="form-dangnhap">
+                            <h2>ĐĂNG NHẬP TÀI KHOẢN
+                                <span class="close">X</span>
+                            </h2>
+                            <p>Nhập email và mật khẩu của bạn:</p>
+                            <input id="loginEmail" type="email" placeholder="Email" required>
+                            <input id="loginPassword" type="password" placeholder="Mật khẩu" required>
+                            <p class="policy">This site is protected by reCAPTCHA and the <br>
+                                Google <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy
+                                </a> and <a href="https://policies.google.com/terms" target="_blank">Terms of Service
+                                </a>apply.</p>
+                            <button id="buttonlogin" type="submit">ĐĂNG NHẬP</button>
+                            <p class="newcustomer">
+                                Khách hàng mới? <a href="taotaikhoan.html" target="_self">Tạo tài khoản</a>
+                            </p>
+                            <p class="misspw">
+                                Quên mật khẩu?
+                                <a href="#">Khôi phục mật khẩu</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- END FORM ĐĂNG NHẬP -->
+
+                    <!-- hiển thị khi đăng nhập thành công -->
+                    <div class="user-info" style="display: none; position: relative;">
+                        <p id="usernameDisplay"
+                            style="cursor: pointer; font-weight: bold; display:flex;align-items:center"></p>
+                        <div id="logoutOption">
+                            Đăng xuất
+                        </div>
+                    </div>
+                    <!-- end hiển thị khi đăng nhập thành công -->
+
+
+                </div>
+            </div>
+
+
+            <!-- các danh mục lớn -->
+            <div class="header-bottom">
+                <div class="container row">
+                    <div class="header-bottom-uniformpro">
+                        <a href="index.html" class="cha">TRANG CHỦ</a>
+                    </div>
+                    <div class="header-bottom-newcl">
+                        <!-- menu cấp 1 -->
+                        <div class="cha">
+                            NEW COLLECTION
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <!-- menu cấp 1 -->
+
+                        <!-- menu cấp 2 -->
+                        <ul class="newcl-sub1">
+                            <li>
+                                <a href="sanphamchonam.html" class="con-1">
+                                    JOHN HENRY
+                                </a>
+                            </li>
+                            <li>
+                                <a href="sanphamchonu.html" class="con-1">
+                                    FREELANCER
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- menu cấp 2 -->
+                    </div>
+                    <div class="header-bottom-jh">
+                        <!-- menu cấp 1 -->
+                        <div class="cha">
+                            JOHN HENRY
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <!-- menu cấp 1 -->
+
+                        <!-- menu cấp 2 -->
+                        <ul class="jh-sub1">
+                            <li>
+                                <div class="con-1">ÁO NAM</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="jh-sub2-1">
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO POLO</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO SƠ MI</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO THUN</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO LEN</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO KHOÁC</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">VEST-BLAZER</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="con-1">QUẦN NAM</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="jh-sub2-2">
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN KHAKI</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN JEANS</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN TÂY</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN SORT</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="con-1">PHỤ KIỆN NAM</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="jh-sub2-3">
+                                    <li><a href="sanphamchonam.html" class="con-2">NÓN LƯỠI TRAI</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">MẮT KÍNH CAO CẤP</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN LÓT NAM</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">CÀ VẠT</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">THẮT LƯNG</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">BÓP-VÍ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sanphamchonam.html" class="con-1">ONLINE ONLY</a>
+
+                            </li>
+                        </ul>
+                        <!-- end menu cấp 2 -->
+                    </div>
+                    <div class="header-bottom-fl">
+                        <!-- menu cấp 1 -->
+                        <div class="cha">
+                            FREELANCER
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <!-- menu cấp 1 -->
+
+                        <!-- menu cấp 2 -->
+                        <ul class="fl-sub1">
+                            <li><a href="sanphamchonu.html" class="con-1">ĐẦM</a></li>
+                            <li><a href="sanphamchonu.html" class="con-1">CHÂN VÁY</a></li>
+                            <li>
+                                <div class="con-1">ÁO NỮ</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="fl-sub2-1">
+                                    <li><a href="sanphamchonu.html" class="con-2">
+                                            ÁO BLOUSE
+                                        </a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO T-SHIRT</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO SƠ MI</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO POLO</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO BLAZER</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO LEN</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="con-1">QUẦN NỮ</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="fl-sub2-2">
+                                    <li><a href="sanphamchonu.html" class="con-2">QUẦN JEAN</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">QUẦN TÂY</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">QUẦN SORT</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sanphamchonu.html" class="con-1">PHỤ KIỆN NỮ</a>
+                            </li>
+                        </ul>
+                        <!-- end menu cấp 2 -->
+                    </div>
+                    <div class="header-bottom-blog">
+                        <!-- menu cấp 1 -->
+                        <a href="blog.html" class="cha">BLOG</a>
+                        <!-- menu cấp 1 -->
+                    </div>
+                    <div class="header-bottom-shop">
+                        <!-- menu cấp 1 -->
+                        <a href="#" class="cha">CỬA HÀNG</a>
+                        <!-- menu cấp 1 -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- end các danh mục lớn -->
+
+    </header>
+
+
+    <!-- blog chi tiết -->
+    <div class="blog-container">
+        <div class="container">
+            <div class="product-nav">
+                <a href="index.html">
+                    Trang chủ
+                </a>
+                <span>/</span>
+                <a href="blog.html">
+                    <p>Blog xu hướng</p>
+                </a>
+                <span>/</span>
+                <p>ÁO THUN COTTON NỮ DỄ THƯƠNG CHO MÙA HÈ – HOLA, SUNSHINE!</p>
+            </div>
+            <div class="blog-detail-container">
+                <div class="phan-mot">
+                    <h3 class="header">
+                        ÁO THUN COTTON NỮ DỄ THƯƠNG CHO MÙA HÈ – HOLA, SUNSHINE!</h3>
+                    <p class="subtext">20 tháng 05, 2025</p>
+                    <img src="img/img_blog/blog-2.1.webp" alt="">
+                    <p class="bottom">
+                        Chiếc áo thun nữ viền “hola” cực xinh mang sắc thái mùa hè nhẹ nhàng, rạng rỡ.
+                        Chất cotton mềm mát, dễ phối đồ, lý tưởng cho ngày năng động và chill.
+                    </p>
+                </div>
+                <div class="phan-hai">
+                    <h3 class="header">HOLA, SUNSHINE! ☀️</h3>
+                    <p class="subtext">Chào nắng theo cách riêng – dịu dàng, rực rỡ và một chút "chic"!
+                        Chiếc áo thun nữ dễ thương từ Freelancer Fashion chính là lời nhắn ngọt ngào mở đầu một ngày mới
+                        đầy năng lượng.​</p>
+                    <h3 class="header">Áo Thun Mùa Hè – Nhẹ Nhàng Nhưng Không Nhạt Nhòa</h3>
+                    <p class="subtext">Không cần họa tiết cầu kỳ hay thiết kế phức tạp,
+                        chỉ một điểm nhấn viền "hola" lượn sóng cũng đủ khiến nàng nổi bật theo cách tinh tế nhất.</p>
+                    <ul>
+                        <li style="list-style-type:disc;">💬 Viền chữ “hola” mềm mại như mood mùa hè – tươi sáng, nhẹ
+                            tênh và đầy cảm hứng.​</li>
+                        <li style="list-style-type:disc;">🧵 Chất liệu cotton mềm mát – phù hợp để nàng mặc từ sáng đến
+                            tối mà vẫn thoải mái.​</li>
+                        <li style="list-style-type:disc;">👕 Form áo vừa vặn, lên dáng dễ thương, năng động – đúng chuẩn
+                            nàng thơ thành thị.​</li>
+                    </ul>
+                    <img src="img/img_blog/blog-2.2.webp" alt="">
+                    <img src="img/img_blog/blog-2.3.webp" alt="">
+                    <h3 class="header">Phối Gì Cũng Hợp – Một Chiếc Áo Cho Mọi Phong Cách​</h3>
+                    <p class="subtext">Dù nàng yêu phong cách nữ tính hay ưa chuộng sự đơn giản, chiếc áo thun cotton
+                        basic này đều chiều lòng mọi outfit:​​</p>
+                    <ul>
+                        <li style="list-style-type:disc;">Kết hợp với quần jeans ống suông cho ngày đi làm nhẹ nhàng.​​
+                        </li>
+                        <li style="list-style-type:disc;">Diện cùng chân váy mini hoặc midi để xuống phố thật xinh
+                            xắn.​​</li>
+                        <li style="list-style-type:disc;">Thêm một đôi sneakers hoặc sandals là nàng đã có ngay một set
+                            đồ “chic and chill” đúng nghĩa!​​</li>
+                    </ul>
+                </div>
+                <div class="phan-ba">
+                    <h2 class="header">
+                        Sẵn Sàng Cho Mùa Nắng Cùng Freelancer Fashion​
+                    </h2>
+                    <h3 class="sub-header">📍 Sản phẩm hiện có mặt trên toàn bộ hệ thống Freelancer – cả cửa hàng và
+                        kênh online.​</h3>
+                    <h3 class="sub-header">
+                        Mua Ngay Tại Đây:​
+                    </h3>
+                    <ul>
+                        <li style="list-style-type:disc;"><a href="sanphamchonu.html">🔸 Website</a>​​</li>
+                        <li style="list-style-type:disc;"><a href="#">🔸 Shopee</a>​​</li>
+                        <li style="list-style-type:disc;"><a href="#">🔸 Hệ thống cửa hàng Freelancer</a>​​</li>
+                    </ul>
+                    <p class="poem">
+                        ☀️ HOLA, SUNSHINE !​ <br>
+                        Một item nhỏ nhưng đủ làm nàng bật mood "chic-and-chill" từ sáng tới chiều.​
+                    </p>
+                    <p class="tags"> Tags: <a href="sanphamchonu.html"><span>FREELANCER, </span></a>
+                        <a href="sanphamchonu.html"><span>Freelancer Fashion, </span></a>
+                        <a href="blog.htmls"><span>áo thun, </span></a>
+                        <a href="blog.html"><span>Thời trang nữ, năng động Cá Tính, </span></a>
+                        <a href="blog.html"><span>Phong Cách New Arrival,</span></a>
+                        <a href="blog.html"><span>New Collection</span></a>
+                    </p>
+                </div>
+
+                <!-- bài viết liên quan -->
+                <div class="blog-header">
+                    <p>BÀI VIẾT LIÊN QUAN</p>
+                </div>
+                <div class="blog-container-item">
+                    <div class="blog-item">
+                        <div class="blog-item-top">
+                            <img src="img/img_main/blogimg-1.webp" alt="">
+                        </div>
+                        <div class="blog-item-bottom">
+                            <div class="blog-date">
+                                <p>10/6/2025</p>
+                            </div>
+                            <a href="#">
+                                <h3>
+                                    NÂNG TẦM PHONG CÁCH HÈ VỚI ÁO POLO SỌC NGANG
+                                </h3>
+                            </a>
+                            <p>
+                                Mùa hè là thời điểm lý tưởng để làm mới phong cách với những thiết kế thoải mái và cá
+                                tính.
+                                Áo polo...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-item">
+                        <div class="blog-item-top">
+                            <img src="img/img_main/blogimg-2.webp" alt="">
+                        </div>
+                        <div class="blog-item-bottom">
+                            <div class="blog-date">
+                                <p>10/6/2025</p>
+                            </div>
+                            <a href="#">
+                                <h3>
+                                    BASIC BUT NEVER BORING - ÁO THUN TRƠN NỮ DỄ PHỐI, TÔN DÁNG​
+                                </h3>
+                            </a>
+                            <p>
+                                Khám phá thiết kế áo thun basic nữ form ôm nhẹ, chất liệu co giãn mịn mát từ Freelancer
+                                Fashion –...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="blog-item">
+                        <div class="blog-item-top">
+                            <img src="img/img_main/blogimg-3.jpg" alt="">
+                        </div>
+                        <div class="blog-item-bottom">
+                            <div class="blog-date">
+                                <p>10/6/2025</p>
+                            </div>
+                            <a href="#">
+                                <h3>
+                                    TỎA SÁNG PHONG CÁCH MÙA HÈ CÙNG OUTFIT NĂNG ĐỘNG​
+                                </h3>
+                            </a>
+                            <p>
+                                Thoải mái tận hưởng ngày hè xanh mát với outfit năng động từ JOHN HENRY. Sự kết hợp giữa
+                                chiếc po...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                 <!-- end bài viết liên quan -->
+            </div>
+           
+        </div>
+    </div>
+    <!-- end blog chi tiết -->
+    <!-- footer -->
+
+
+    <footer>
+        <div class="container">
+            <div class="address">
+                <p class="footer-header">THÔNG TIN LIÊN HỆ</p>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-house"></i>
+                        <p>Công ty TNHH T.M.G</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>
+                            172 Nguyễn Trãi, P.Bến Thành, Q1, HCM</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <p>0914 516 446 - 0906 954 368</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>
+                            cskh@duchai-styles.com</p>
+                    </li>
+                </ul>
+                <div class="da-thong-bao">
+                    <img src="img/img_main/dathongbao.webp" alt="">
+                </div>
+            </div>
+            <div class="our-company">
+                <p class="footer-header">
+                    CÔNG TY
+                </p>
+                <ul>
+                    <li>Về chúng tôi</li>
+                    <li>Xu hướng</li>
+                    <li>Liên hệ</li>
+                    <li>Tuyển dụng</li>
+                    <li>Theo dõi đơn hàng</li>
+                    <li>Nhượng quyền</li>
+                    <li>Ưu đãi VIP member</li>
+                </ul>
+            </div>
+            <div class="policy">
+                <p class="footer-header">CHÍNH SÁCH</p>
+                <ul>
+                    <li>Đăng ký thành viên</li>
+                    <li>Hướng dẫn thanh toán</li>
+                    <li>Giao hàng và phí vận chuyển</li>
+                    <li>Chính sách đổi trả</li>
+                    <li>Chính sách bảo mật</li>
+                    <li>Điều khoản và thanh toán</li>
+                </ul>
+            </div>
+            <div class="contact">
+                <p class="footer-header">
+                    KẾT NỐI VỚI CHÚNG TÔI
+                </p>
+                <div class="send-mail">
+                    <input type="email" placeholder="Email">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </div>
+                <div class="social">
+                    <div class="fb-1">
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                            <p>ĐỨC HẢI</p>
+                        </a>
+                    </div>
+                    <div class="fb-2">
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i>
+                            <p>FREELANCER</p>
+                        </a>
+                    </div>
+                    <div class="insta">
+                        <a href="https://www.instagram.com/" target="_blank"><img src="img/img_main/insta.png" alt="">
+                            <p>ĐỨC HẢI</p>
+                        </a>
+                    </div>
+                    <div class="ytb">
+                        <a href="https://www.youtube.com/" target="_blank"><img src="img/img_main/ytb.webp" alt="">
+                            <p>DucHaiStyles</p>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="checkout-methob">
+                    <p>PHƯƠNG THỨC THANH TOÁN</p>
+                    <div class="img">
+                        <img src="img/img_main/mm.webp" alt="">
+                        <img src="img/img_main/vnp.webp" alt="">
+                        <img src="img/img_main/spp.webp" alt="">
+                    </div>
+                </div>
+                <div class="delivery">
+                    <p>ĐỐI TÁC VẬN CHUYỂN</p>
+                    <div class="img">
+                        <img src="img/img_main/nj.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2025 Duc Hai & Freelancer</p>
+        </div>
+
+    </footer>
+
+    <!-- end footer -->
+
+    <!-- social va lien he  -->
+    <div class="social-fixed">
+        <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" target="_blank"></a><img src="img/img_main/insta.png" alt="">
+    </div>
+    <div class="contact-fixed">
+        <a href="#"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://www.facebook.com/messages/" target="_blank"><i class="fa-brands fa-facebook-messenger"></i></a>
+        <a href="https://chat.zalo.me/" target="_blank"><img src="img/img_main/zll.webp" alt=""></a>
+    </div>
+    <!-- end social va lien he  -->
+    <script src="js/store.js"></script>
+    <script src="js/jsforall.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt hàng</title>
+    <link rel="stylesheet" href="css/cssforall.css">
+    <link rel="stylesheet" href="css/dathang.css">
+</head>
+
+<body>
+    <div class="header-main">
+        <p>ĐẶT HÀNG</p>
+    </div>
+    <div class="thanhtoan-container">
+        <div class="thanhtoan-left">
+            <div class="thanhtoan-left-container">
+                <h3 class="header">Duc Hai & Freelancers</h3>
+                <div class="product-nav">
+                    <a href="chitietsanpham.html">
+                        Áo Polo Tay Ngắn Form Vừa KS25SS19P-SC
+                    </a>
+                    <span>/</span>
+                    <p>Đặt hàng</p>
+                </div>
+                <h2>Thông tin giao hàng</h2>
+                <div class="order-form">
+                    <div class="form-group">
+                        <input type="text" id="full-name" name="full-name" placeholder="Nhập họ và tên của bạn">
+                        <div class="error-message" id="error-fullname"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Nhập email của bạn">
+                        <div class="error-message" id="error-email"></div>
+                        <input type="dienthoai" id="phone" name="dienthoai" placeholder="Nhập số điện thoại của bạn">
+                        <div class="error-message" id="error-phone"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="diachi" name="diachi" placeholder="Nhập địa chỉ giao hàng của bạn"></textarea>
+                        <div class="error-message" id="error-address"></div>
+                    </div>
+
+                    <div class="method-checkout">
+                        <label for="payment-method">Phương thức thanh toán</label>
+                        <select id="payment-method" name="payment-method" required>
+                            <option value="" disabled selected>Chọn phương thức thanh toán</option>
+                            <option value="cash-on-delivery">Thanh toán khi nhận hàng</option>
+                            <option value="credit-card" disabled>Thẻ tín dụng</option>
+                        </select>
+                        <div class="error-message"  id="error-payment"></div>
+                    </div>
+                    <div class="bottom">
+                        <a href="chitietsanpham.html" class="quaylai">Quay lại mua sắm</a>
+                        <button type="submit" class="submit-btn" id="submit-btn">Hoàn tất đơn hàng</button>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+        <div class="thanhtoan-right">
+            <div class="thanhtoan-right-container">
+                <table class="product-buy">
+                    <!-- <tr class="sanpham">
+                        <td>
+                            <img src="img/img_aonam/detail-1.jpg" alt="">
+                            <div class="soluong">1</div>
+                        </td>
+                        <td>
+                            <h6 class="name">Áo Polo Tay Ngắn Form Vừa KS25SS19P-SC</h6>
+                            <span class="color">BROWN / S</span>
+                        </td>
+                        <td class="price-root">999999đ</td>
+                    </tr>
+                    <tr class="sanpham">
+                        <td>
+                            <img src="img/img_aonam/detail-1.jpg" alt="">
+                            <div class="soluong">1</div>
+                        </td>
+                        <td>
+                            <h6 class="name">Áo Polo Tay Ngắn Form Vừa KS25SS19P-SC</h6>
+                            <span class="color">BROWN / S</span>
+                        </td>
+                        <td class="price-root">999999đ</td>
+                    </tr>
+                     -->
+
+                    <tr class="discount">
+                        <td colspan="2">
+                            <input id="discount" type="text" placeholder="Mã giảm giá">
+                        </td>
+                        <td><button class="dcuse">Sử dụng</button></td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="2">
+                            Tổng cộng
+                        </td>
+                        <td>
+                            <p class="price-total">0</p>
+                            <span>VNĐ</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="address">
+                <p class="footer-header">THÔNG TIN LIÊN HỆ</p>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-house"></i>
+                        <p>Công ty TNHH T.M.G</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>
+                            172 Nguyễn Trãi, P.Bến Thành, Q1, HCM</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <p>0914 516 446 - 0906 954 368</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>
+                            cskh@duchai-styles.com</p>
+                    </li>
+                </ul>
+                <div class="da-thong-bao">
+                    <img src="img/img_main/dathongbao.webp" alt="">
+                </div>
+            </div>
+            <div class="our-company">
+                <p class="footer-header">
+                    CÔNG TY
+                </p>
+                <ul>
+                    <li>Về chúng tôi</li>
+                    <li>Xu hướng</li>
+                    <li>Liên hệ</li>
+                    <li>Tuyển dụng</li>
+                    <li>Theo dõi đơn hàng</li>
+                    <li>Nhượng quyền</li>
+                    <li>Ưu đãi VIP member</li>
+                </ul>
+            </div>
+            <div class="policy">
+                <p class="footer-header">CHÍNH SÁCH</p>
+                <ul>
+                    <li>Đăng ký thành viên</li>
+                    <li>Hướng dẫn thanh toán</li>
+                    <li>Giao hàng và phí vận chuyển</li>
+                    <li>Chính sách đổi trả</li>
+                    <li>Chính sách bảo mật</li>
+                    <li>Điều khoản và thanh toán</li>
+                </ul>
+            </div>
+            <div class="contact">
+                <p class="footer-header">
+                    KẾT NỐI VỚI CHÚNG TÔI
+                </p>
+                <div class="send-mail">
+                    <input type="email" placeholder="Email">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </div>
+                <div class="social">
+                    <div class="fb-1">
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                            <p>ĐỨC HẢI</p>
+                        </a>
+                    </div>
+                    <div class="fb-2">
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i>
+                            <p>FREELANCER</p>
+                        </a>
+                    </div>
+                    <div class="insta">
+                        <a href="https://www.instagram.com/" target="_blank"><img src="img/img_main/insta.png" alt="">
+                            <p>ĐỨC HẢI</p>
+                        </a>
+                    </div>
+                    <div class="ytb">
+                        <a href="https://www.youtube.com/" target="_blank"><img src="img/img_main/ytb.webp" alt="">
+                            <p>DucHaiStyles</p>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="checkout-methob">
+                    <p>PHƯƠNG THỨC THANH TOÁN</p>
+                    <div class="img">
+                        <img src="img/img_main/mm.webp" alt="">
+                        <img src="img/img_main/vnp.webp" alt="">
+                        <img src="img/img_main/spp.webp" alt="">
+                    </div>
+                </div>
+                <div class="delivery">
+                    <p>ĐỐI TÁC VẬN CHUYỂN</p>
+                    <div class="img">
+                        <img src="img/img_main/nj.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2025 Duc Hai & Freelancer</p>
+        </div>
+
+    </footer>
+
+    <script src="js/thanhtoan.js"></script>
+
+
+
+
+</body>
+
+</html>

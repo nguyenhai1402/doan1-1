@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin-Thông tin tài khoản</title>
+  <link rel="stylesheet" href="./admincss/cssforalladmin.css">
+  <link rel="stylesheet" href="./admincss/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  
+</head>
+
+<body>
+  <header>
+    <div class="user-menu">
+      Hải
+      <i class="fa-solid fa-sort-down"></i>
+      <div class="dropdown">
+        <a href="#">Đăng xuất</a>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <nav>
+      <a href="admin.html" class="active"><i class="fa-solid fa-user" style="font-size:0.8rem"></i>Thông tin tài khoản</a>
+      <a href="admin-order.html"><i class="fa-solid fa-box-open" style="font-size:0.6rem"></i>Quản lý đơn đặt hàng</a>
+      <a href="admin-loaisp.html"><i class="fa-solid fa-tags" style="font-size:small"></i>Quản lý sản phẩm</a>
+      <a href="thongke.html"><i class="fa-solid fa-chart-line" style="font-size:small"></i>Thống kê bán hàng</a>
+      <a href="hoadonnhap.html"><i class="fa-solid fa-file-invoice" style="font-size:1.1rem"></i>Hóa đơn nhập</a>
+      <a href="nhacungcap.html"><i class="fa-solid fa-truck" style="font-size:0.7rem"></i>Nhà cung cấp</a>
+      <a href="khachhang.html"><i class="fa-solid fa-user-friends" style="font-size:0.7rem"></i>Khách hàng</a>
+      <a href="nhanvien.html"><i class="fa-solid fa-user-tie" style="font-size:0.9rem"></i>Nhân viên</a>
+      <a href="#"><i class="fa-solid fa-blog" style="font-size:small"></i>Blog</a>
+    </nav>
+    <div class="account-content">
+      <div class="account-header">
+        <img src="../img/img_main/logochinh.jpg" alt="Logo Đức hải" class="logo-img">
+        <h2>Welcome, <span class="username">Hải</span></h2>
+        <p class="account-subtext">Thông tin tài khoản của bạn</p>
+      </div>
+
+      <div class="account-details">
+        <table>
+          <tr>
+            <td><strong>Mã người dùng</strong></td>
+            <td>ND1</td>
+          </tr>
+          <tr>
+            <td><strong>Tên người dùng</strong></td>
+            <td>Nguyễn Hải</td>
+          </tr>
+          <tr>
+            <td><strong>Email</strong></td>
+            <td>luachuaband1@gmail.com</td>
+          </tr>
+          <tr>
+            <td><strong>Số điện thoại</strong></td>
+            <td>0344999999</td>
+          </tr>
+          <tr>
+            <td><strong>Địa chỉ</strong></td>
+            <td>Ân thi - tỉnh Hưng Yên</td>
+          </tr>
+          <tr>
+            <td><strong>Chức vụ</strong></td>
+            <td>Quản lý</td>
+          </tr>
+          <tr>
+            <td><strong>Mật khẩu</strong></td>
+            <td>********</td>
+          </tr>
+        </table>
+        <button class="change-password-btn">
+          <i class="fa fa-refresh"></i> Đổi mật khẩu
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <script src="adminjs/admin.js"></script>
+</body>
+
+</html>

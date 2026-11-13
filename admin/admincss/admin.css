@@ -1,0 +1,74 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+.account-content {
+  padding: 30px;
+  text-align: center;
+  margin: auto;
+}
+
+.account-header .logo-img {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.account-header h2 {
+  color: #ff0000;
+  margin: 0;
+}
+
+.username {
+  color: blue;
+}
+
+.account-subtext {
+  font-size: 14px;
+  color: #640000;
+  margin-bottom: 30px;
+}
+
+.account-details {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.account-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.account-details td {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.account-details td:first-child {
+  width: 150px;
+  font-weight: bold;
+  color: #222;
+}
+
+.change-password-btn {
+  margin-top: 20px;
+  margin-left: 30%;
+  background-color: #ff0000;
+  color: #000;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+.change-password-btn:hover {
+  opacity: 0.6;
+}

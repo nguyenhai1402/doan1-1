@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý loại sản phẩm</title>
+  <link rel="stylesheet" href="./admincss/cssforalladmin.css">
+  <link rel="stylesheet" href="./admincss/adminloaisp.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="user-menu">
+      Hải <i class="fa-solid fa-sort-down"></i>
+      <div class="dropdown">
+        <a href="#">Đăng xuất</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav>
+      <a href="admin.html" ><i class="fa-solid fa-user" style="font-size:0.8rem"></i>Thông tin tài khoản</a>
+      <a href="admin-order.html"><i class="fa-solid fa-box-open" style="font-size:0.6rem"></i>Quản lý đơn đặt hàng</a>
+      <a href="admin-loaisp.html" class="active"><i class="fa-solid fa-tags" style="font-size:small"></i>Quản lý sản phẩm</a>
+      <a href="thongke.html"><i class="fa-solid fa-chart-line" style="font-size:small"></i>Thống kê bán hàng</a>
+      <a href="hoadonnhap.html"><i class="fa-solid fa-file-invoice" style="font-size:1.1rem"></i>Hóa đơn nhập</a>
+      <a href="nhacungcap.html"><i class="fa-solid fa-truck" style="font-size:0.7rem"></i>Nhà cung cấp</a>
+      <a href="khachhang.html"><i class="fa-solid fa-user-friends" style="font-size:0.7rem"></i>Khách hàng</a>
+      <a href="nhanvien.html"><i class="fa-solid fa-user-tie" style="font-size:0.9rem"></i>Nhân viên</a>
+      <a href="#"><i class="fa-solid fa-blog" style="font-size:small"></i>Blog</a>
+    </nav>
+
+    <div class="content">
+      <h2>Danh sách sản phẩm</h2>
+
+      <div class="filter-bar" style="margin-bottom: 15px;">
+        <button class="btn btn-add" onclick="moMenu()">+ Thêm sản phẩm</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Mã SP</th>
+            <th>Tên SP</th>
+            <th>Giá</th>
+            <th>Màu</th>
+            <th>Size</th>
+            <th>Giới tính</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="product-table">
+          <tr>
+            <td>1</td>
+            <td>SP001</td>
+            <td>Áo thun basic</td>
+            <td>150,000đ</td>
+            <td>Trắng</td>
+            <td>M</td>
+            <td>Unisex</td>
+            <td>
+              <button class="btn btn-edit" onclick="moMenu('SP001','Áo thun basic','150000','Trắng','M','Unisex')"><i
+                  class="fas fa-pen"></i></button>
+              <button class="btn btn-delete"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <button><<</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>>></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="dongMenu()">x</span>
+      <h3 id="modalTitle">Thêm sản phẩm</h3>
+      <input type="text" id="productId" placeholder="Mã sản phẩm">
+      <input type="text" id="productName" placeholder="Tên sản phẩm">
+      <input type="number" id="productPrice" placeholder="Giá sản phẩm">
+      <input type="text" id="productColor" placeholder="Màu sắc">
+      <input type="text" id="productSize" placeholder="Size (S, M, L...)">
+      <select id="productGender">
+        <option value="">-- Chọn giới tính --</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+        <option value="Unisex">Unisex</option>
+      </select>
+      <div class="modal-buttons">
+        <button class="btn btn-add" onclick="luuSanPham()">Lưu</button>
+        <button class="btn btn-delete" onclick="dongMenu()">Hủy</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="adminjs/admin.js"></script>
+  <script src="adminjs/quanlysp.js"></script>
+</body>
+
+</html>

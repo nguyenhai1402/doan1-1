@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thống kê bán hàng</title>
+  <link rel="stylesheet" href="./admincss/cssforalladmin.css" />
+  <link rel="stylesheet" href="./admincss/thongke.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="user-menu">
+      Hải
+      <i class="fa-solid fa-sort-down"></i>
+      <div class="dropdown">
+        <a href="#">Đăng xuất</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav>
+      <a href="admin.html"><i class="fa-solid fa-user" style="font-size:0.8rem"></i>Thông tin tài
+        khoản</a>
+      <a href="admin-order.html"><i class="fa-solid fa-box-open" style="font-size:0.6rem"></i>Quản lý đơn đặt hàng</a>
+      <a href="admin-loaisp.html"><i class="fa-solid fa-tags" style="font-size:small"></i>Quản lý sản phẩm</a>
+      <a href="thongke.html"  class="active"><i class="fa-solid fa-chart-line" style="font-size:small"></i>Thống kê bán hàng</a>
+      <a href="hoadonnhap.html"><i class="fa-solid fa-file-invoice" style="font-size:1.1rem"></i>Hóa đơn nhập</a>
+      <a href="nhacungcap.html"><i class="fa-solid fa-truck" style="font-size:0.7rem"></i>Nhà cung cấp</a>
+      <a href="khachhang.html"><i class="fa-solid fa-user-friends" style="font-size:0.7rem"></i>Khách hàng</a>
+      <a href="nhanvien.html"><i class="fa-solid fa-user-tie" style="font-size:0.9rem"></i>Nhân viên</a>
+      <a href="#"><i class="fa-solid fa-blog" style="font-size:small"></i>Blog</a>
+    </nav>
+
+    <div class="content">
+      <h2>Thống kê bán hàng</h2>
+
+      <div class="filter-bar">
+        <label for="timeType">Xem theo:</label>
+        <select id="chonLoaiThoiGian">
+          <option value="tuan">Tuần</option>
+          <option value="thang" selected>Tháng</option>
+          <option value="nam">Năm</option>
+        </select>
+
+        <select id="chonGiaTriThoiGian">
+          
+        </select>
+      </div>
+
+      <div class="stats-overview">
+        <div class="stat-box">
+          <h3 id="orders-count">1,245</h3>
+          <p>Đơn hàng</p>
+        </div>
+        <div class="stat-box">
+          <h3 id="revenue">980,000,000đ</h3>
+          <p>Doanh thu</p>
+        </div>
+        <div class="stat-box">
+          <h3 id="customers-count">320</h3>
+          <p>Khách hàng mới</p>
+        </div>
+      </div>
+
+      <div class="charts">
+        <div class="chart-container">
+          <h4>Doanh thu theo thời gian</h4>
+          <canvas id="bieuDoDoanhThu" height="200"></canvas>
+        </div>
+        <div class="chart-container">
+          <h4>Tỉ lệ loại sản phẩm</h4>
+          <canvas id="bieuDoLoaiSanPham" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./adminjs/thongke.js">
+    
+  </script>
+</body>
+
+</html>

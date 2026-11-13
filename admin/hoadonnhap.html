@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hóa đơn nhập</title>
+  <link rel="stylesheet" href="./admincss/cssforalladmin.css">
+  <link rel="stylesheet" href="./admincss/hoadonnhap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="user-menu">
+      Hải
+      <i class="fa-solid fa-sort-down"></i>
+      <div class="dropdown">
+        <a href="#">Đăng xuất</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav>
+      <a href="admin.html" ><i class="fa-solid fa-user" style="font-size:0.8rem"></i>Thông tin tài khoản</a>
+      <a href="admin-order.html"><i class="fa-solid fa-box-open" style="font-size:0.6rem"></i>Quản lý đơn đặt hàng</a>
+      <a href="admin-loaisp.html"><i class="fa-solid fa-tags" style="font-size:small"></i>Quản lý sản phẩm</a>
+      <a href="thongke.html"><i class="fa-solid fa-chart-line" style="font-size:small"></i>Thống kê bán hàng</a>
+      <a href="hoadonnhap.html" class="active"><i class="fa-solid fa-file-invoice" style="font-size:1.1rem"></i>Hóa đơn nhập</a>
+      <a href="nhacungcap.html"><i class="fa-solid fa-truck" style="font-size:0.7rem"></i>Nhà cung cấp</a>
+      <a href="khachhang.html"><i class="fa-solid fa-user-friends" style="font-size:0.7rem"></i>Khách hàng</a>
+      <a href="nhanvien.html"><i class="fa-solid fa-user-tie" style="font-size:0.9rem"></i>Nhân viên</a>
+      <a href="#"><i class="fa-solid fa-blog" style="font-size:small"></i>Blog</a>
+    </nav>
+
+    <div class="content">
+      <h2>Danh sách hóa đơn nhập</h2>
+
+      <div class="filter-bar">
+        <select>
+          <option value="all">Tất cả loại</option>
+          <option value="nam">Thời trang Nam</option>
+          <option value="nu">Thời trang Nữ</option>
+        </select>
+        <input type="date" />
+        <input type="text" placeholder="Tìm theo mã hóa đơn hoặc nhà cung cấp...">
+        <button class="btn btn-add" onclick="moHoaDon()">+Thêm hóa đơn</button>
+
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Mã HĐ</th>
+            <th>Ngày nhập</th>
+            <th>Loại</th>
+            <th>Số lượng</th>
+            <th>Tổng tiền</th>
+            <th>Nhà cung cấp</th>
+            <th>Ghi chú</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="invoice-table">
+          
+          <!-- Chi tiết hóa đơn -->
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button><<</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>>></button>
+      </div>
+      <!-- Modal -->
+      <div id="invoiceModal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal" onclick="dongHoaDon()">x</span>
+          <h3 id="modalTitle">Thêm hóa đơn</h3>
+          <input type="text" id="maHD" placeholder="Mã hóa đơn">
+          <input type="date" id="ngayNhap">
+          <input type="text" id="loai" placeholder="Loại">
+          <input type="number" id="soLuong" placeholder="Số lượng">
+          <input type="number" id="tongTien" placeholder="Tổng tiền (VND)">
+          <input type="text" id="nhaCC" placeholder="Nhà cung cấp">
+          <input type="text" id="ghiChu" placeholder="Ghi chú">
+          <div class="modal-buttons">
+            <button class="btn btn-add" onclick="luuHoaDon()">Lưu</button>
+            <button class="btn btn-delete" onclick="dongHoaDon()">Hủy</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="adminjs/admin.js"></script>
+  <script src="adminjs/hoadonnhap.js"></script>
+
+</body>
+
+</html>

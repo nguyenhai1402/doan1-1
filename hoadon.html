@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hóa đơn mua hàng</title>
+    <link rel="stylesheet" href="css/hoadon.css">
+</head>
+
+<body>
+    <div class="hoadon-container">
+        <h1>HÓA ĐƠN MUA HÀNG</h1>
+        <div class="section">
+            <h3>Thông tin khách hàng</h3>
+            <p><strong>Họ tên:</strong> <span id="ho-ten"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong>SĐT:</strong> <span id="sdt"></span></p>
+            <p><strong>Địa chỉ:</strong> <span id="dia-chi"></span></p>
+        </div>
+
+        <div class="section">
+            <h3>Thông tin đơn hàng</h3>
+            <p><strong>Sản phẩm:</strong> <span id="ten-sp"></span></p>
+            <p><strong>Màu sắc:</strong> <span id="mau-sp"></span></p>
+            <p><strong>Giá:</strong> <span id="gia-sp"></span></p>
+            <p><strong>Số lượng:</strong> <span id="so-luong"></span></p>
+            <p><strong>Tổng cộng:</strong> <span id="tong-gia"></span></p>
+        </div>
+        <!-- in hóa đơn -->
+        <button onclick="window.print()">In hóa đơn</button>
+
+    </div>
+
+    <script src="js/hoadon.js"></script>
+</body>
+
+</html>

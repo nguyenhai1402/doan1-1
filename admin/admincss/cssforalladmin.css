@@ -1,0 +1,379 @@
+/* KHởi tạo các biến */
+:root {
+    --text-color: #ffffff;
+    --price-color: red;
+    --bgcolor1: #ffffff;
+    --bgcolor2: #FEF1F9;
+    --bgbutton: #C21935;
+    --submenu: #ffffff;
+    --color-hover1: rgb(255, 0, 0);
+    --header-color: #951329;
+    --subtext: #8f8f8f;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: var(--header-color);
+    color: white;
+    padding: 10px;
+    text-align: right;
+    position: relative;
+}
+
+/* ảnh nền cho contetn */
+.content {
+    background: url(../../img/img_main/bgbody.png) repeat fixed 0 0 transparent;
+}
+
+/* ảnh nền cho contetn */
+
+.content {
+    flex: 1;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content h2 {
+    border-left: 4px solid red;
+    padding-left: 10px;
+}
+
+.user-menu {
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0px;
+    background-color: white;
+    color: black;
+    top: 90%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 170%;
+}
+
+.dropdown a {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px 20px;
+    font-size: 0.7rem;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown a:hover {
+    background-color: #f4f4f4;
+}
+
+.user-menu:hover .dropdown {
+    display: block;
+}
+
+.container {
+    display: flex;
+}
+
+nav {
+    width: 15%;
+    background-color: #f4f4f4;
+    height: 100vh;
+    padding-top: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: #000;
+    justify-content: flex-start;
+    margin: 20px 0;
+}
+
+nav a:hover {
+    background-color: #ddd;
+}
+
+nav a.active {
+    background-color: #e0e0e0;
+    border-right: 4px solid red;
+    font-weight: bold;
+    color: #000;
+}
+
+/* css chung cho bảng */
+thead {
+    background-color: #2c3e50;
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th,
+td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* end css chung cho bảng */
+.pagination {
+    text-align: center;
+}
+
+.pagination button {
+    margin: 0 2px;
+    padding: 5px 10px;
+    background-color: #0094ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+.pagination button:hover {
+    opacity: 0.8;
+}
+
+/* css chung cho các button */
+.btn {
+    padding: 8px 16px;
+    margin-right: 5px;
+    border: none;
+    color: white;
+    background-color: red;
+    cursor: pointer;
+}
+
+.btn-add {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+
+/* end css chung cho các button */
+
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filter-bar select,
+.filter-bar input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+input[type="text"] {
+    padding: 6px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* menu thêm hoặc sửa dữ liệu  */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: white;
+    margin: 8% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content input,
+.modal-content select {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.modal-buttons {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.modal-buttons button {
+    margin-left: 10px;
+}
+
+.close-modal {
+    float: right;
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* menu thêm hoặc sửa dữ liệu  */
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    nav {
+        width: 25%;
+        /* thu hẹp nav để content rộng hơn */
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    table th,
+    table td {
+        font-size: 0.9rem;
+    }
+
+    .dropdown {
+        width: 200px;
+    }
+
+    .user-menu {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    nav {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    nav a {
+        margin: 5px 0;
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    td {
+        position: relative;
+        padding-left: 50%;
+    }
+
+    /* hiển thị dạng mỗi dòng có 1 cột tên cột */
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    /* end hiển thị dạng mỗi dòng có 1 cột tên cột */
+    .pagination {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 599px) {
+    header {
+        text-align: center;
+        padding: 8px;
+    }
+
+    table {
+        width: 65%;
+    }
+
+    .user-menu {
+        justify-content: center;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+
+    .btn,
+    .btn-add,
+    .btn-edit,
+    .btn-delete {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .status {
+        width: 30%;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+    }
+}

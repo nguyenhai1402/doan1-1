@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+    margin: 0;
+
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    color: white;
+}
+.status.confirmed {
+    background-color: green;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.btn-view {
+    margin: 0 2px;
+    padding: 5px 10px;
+    background-color: #0094ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-confirm {
+  background-color: green;
+  color: white;
+  margin-right: 5px;
+}
+
+#order-detail-popup {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 30%;
+    background: white;
+    padding: 20px;
+    border: 2px solid black;
+    z-index: 999;
+}
+#order-detail-popup h3{
+    font-size: 1.3rem;
+    color: rgb(142, 0, 0);
+    border-left: 3px solid red;
+    padding-left: 10px;
+}
+#order-product-total{
+    color: red;
+    font-size: 1.4rem;
+}

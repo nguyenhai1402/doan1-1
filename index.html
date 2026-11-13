@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/bgimg.png">
+    <title>
+        Quần áo thời trang nam John Henry
+        & quần áo thời trang nữ Freelancer
+        - John Henry & Freelancers
+    </title>
+    <link rel="stylesheet" href="css/cssforall.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/store.css">
+</head>
+
+<body>
+    <!-- header -->
+    <header class="row">
+        <div class="header-top row">
+            <div class="header-top-img">
+                <img src="img/img_main/chuong.webp" alt="">
+            </div>
+            <p>MIỄN PHÍ VẬN CHUYỂN ĐƠN HÀNG TỪ 299K</p>
+        </div>
+        <div class="header-mid">
+            <!-- CONTAINER DÙNG ĐỂ CĂN LỀ -->
+            <div class="container row">
+                <!-- end CONTAINER DÙNG ĐỂ CĂN LỀ -->
+                <a href="index.html" class="header-mid-logo">
+                    <img src="img/img_main/logochinh.jpg" alt="">
+                </a>
+                <div class="header-mid-search">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm">
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+                <!-- Menubar ẩn hiện các danh mục-->
+                <div class="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <!--end Menubar ẩn hiện -->
+                <div class="header-mid-last">
+                    <!-- xem vị trí cửa hàng -->
+                    <div class="location">
+                        <a href="#">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                    </div>
+                    <!-- end xem vị trí cửa hàng -->
+
+                    <!-- FORM ĐĂNG NHẬP -->
+                    <div class="login">
+                        <p><i class="fa-solid fa-person"></i></p>
+                        <div class="form-dangnhap">
+                            <h2>ĐĂNG NHẬP TÀI KHOẢN
+                                <span class="close">X</span>
+                            </h2>
+                            <p>Nhập email và mật khẩu của bạn:</p>
+                            <input id="loginEmail" type="email" placeholder="Email" required>
+                            <input id="loginPassword" type="password" placeholder="Mật khẩu" required>
+                            <p class="policy">This site is protected by reCAPTCHA and the <br>
+                                Google <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy
+                                </a> and <a href="https://policies.google.com/terms" target="_blank">Terms of Service
+                                </a>apply.</p>
+                            <button id="buttonlogin" type="submit">ĐĂNG NHẬP</button>
+                            <p class="newcustomer">
+                                Khách hàng mới? <a href="taotaikhoan.html" target="_self">Tạo tài khoản</a>
+                            </p>
+                            <p class="misspw">
+                                Quên mật khẩu?
+                                <a href="#">Khôi phục mật khẩu</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- END FORM ĐĂNG NHẬP -->
+
+                    <!-- hiển thị khi đăng nhập thành công -->
+                    <div class="user-info" style="display: none; position: relative;">
+                        <p id="usernameDisplay"
+                            style="cursor: pointer; font-weight: bold; display:flex;align-items:center"></p>
+                        <div id="logoutOption">
+                            Đăng xuất
+                        </div>
+                    </div>
+                    <!-- end hiển thị khi đăng nhập thành công -->
+
+
+                </div>
+            </div>
+
+
+            <!-- các danh mục lớn -->
+            <div class="header-bottom">
+                <div class="container row">
+                    <div class="header-bottom-uniformpro">
+                        <a href="index.html" class="cha">TRANG CHỦ</a>
+                    </div>
+                    <div class="header-bottom-newcl">
+                        <!-- menu cấp 1 -->
+                        <div class="cha">
+                            NEW COLLECTION
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <!-- menu cấp 1 -->
+
+                        <!-- menu cấp 2 -->
+                        <ul class="newcl-sub1">
+                            <li>
+                                <a href="sanphamchonam.html" class="con-1">
+                                    JOHN HENRY
+                                </a>
+                            </li>
+                            <li>
+                                <a href="sanphamchonu.html" class="con-1">
+                                    FREELANCER
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- menu cấp 2 -->
+                    </div>
+                    <div class="header-bottom-jh">
+                        <!-- menu cấp 1 -->
+                        <div class="cha">
+                            JOHN HENRY
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <!-- menu cấp 1 -->
+
+                        <!-- menu cấp 2 -->
+                        <ul class="jh-sub1">
+                            <li>
+                                <div class="con-1">ÁO NAM</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="jh-sub2-1">
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO POLO</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO SƠ MI</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO THUN</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO LEN</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO KHOÁC</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">VEST-BLAZER</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="con-1">QUẦN NAM</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="jh-sub2-2">
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN KHAKI</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN JEANS</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN TÂY</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN SORT</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="con-1">PHỤ KIỆN NAM</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="jh-sub2-3">
+                                    <li><a href="sanphamchonam.html" class="con-2">NÓN LƯỠI TRAI</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">MẮT KÍNH CAO CẤP</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN LÓT NAM</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">CÀ VẠT</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">THẮT LƯNG</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">BÓP-VÍ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sanphamchonam.html" class="con-1">ONLINE ONLY</a>
+
+                            </li>
+                        </ul>
+                        <!-- end menu cấp 2 -->
+                    </div>
+                    <div class="header-bottom-fl">
+                        <!-- menu cấp 1 -->
+                        <div class="cha">
+                            FREELANCER
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <!-- menu cấp 1 -->
+
+                        <!-- menu cấp 2 -->
+                        <ul class="fl-sub1">
+                            <li><a href="sanphamchonu.html" class="con-1">ĐẦM</a></li>
+                            <li><a href="sanphamchonu.html" class="con-1">CHÂN VÁY</a></li>
+                            <li>
+                                <div class="con-1">ÁO NỮ</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="fl-sub2-1">
+                                    <li><a href="sanphamchonu.html" class="con-2">
+                                            ÁO BLOUSE
+                                        </a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO T-SHIRT</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO SƠ MI</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO POLO</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO BLAZER</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO LEN</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="con-1">QUẦN NỮ</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="fl-sub2-2">
+                                    <li><a href="sanphamchonu.html" class="con-2">QUẦN JEAN</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">QUẦN TÂY</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">QUẦN SORT</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sanphamchonu.html" class="con-1">PHỤ KIỆN NỮ</a>
+                            </li>
+                        </ul>
+                        <!-- end menu cấp 2 -->
+                    </div>
+                    <div class="header-bottom-blog">
+                        <!-- menu cấp 1 -->
+                        <a href="blog.html" class="cha">BLOG</a>
+                        <!-- menu cấp 1 -->
+                    </div>
+                    <div class="header-bottom-shop">
+                        <!-- menu cấp 1 -->
+                        <a href="#" class="cha">CỬA HÀNG</a>
+                        <!-- menu cấp 1 -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- end các danh mục lớn -->
+
+    </header>
+    <!-- html cho banner -->
+    <div class="banner-container">
+        <div class="banner-container-img">
+            <img src="img/img_main/banner-main1.webp" alt="" class="banner-1">
+            <img src="img/img_main/banner-main2.webp" alt="" class="banner-2">
+            <img src="img/img_main/banner-main2.webp" alt="" class="banner-3">
+        </div>
+        <div class="dot">
+            <i class="fa-solid fa-circle active" style="color: #ebecf0;"></i>
+            <i class="fa-solid fa-circle" style="color: #ebecf0;"></i>
+        </div>
+    </div>
+
+    <!-- end html cho banner -->
+
+    <div class="pick">
+        <div class="container">
+            <ul>
+                <li><a href="#">
+                        <img src="img/img_main/imgdieuhuong-1.webp" alt="">
+                    </a></li>
+                <li><a href="#">
+                        <img src="img/img_main/imgdieuhuong-2.webp" alt="">
+                    </a></li>
+                <li><a href="#">
+                        <img src="img/img_main/imgdieuhuong-3.webp" alt="">
+                    </a></li>
+                <li><a href="#">
+                        <img src="img/img_main/imgdieuhuong-4.webp" alt="">
+                    </a></li>
+                <li><a href="#">
+                        <img src="img/img_main/imgdieuhuong-5.webp" alt="">
+                    </a></li>
+                <li><a href="#"><img src="img/img_main/imgdieuhuong-6.webp" alt=""></a></li>
+                <li><a href="#">
+                        <img src="img/img_main/imgdieuhuong-7.webp" alt="">
+                    </a></li>
+                <li><a href="#">
+                        <img src="img/img_main/imgdieuhuong-8.webp" alt="">
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="display-img">
+        <div class="container">
+            <div class="items">
+                <a href="#"><img src="img/img_main/boyimg-1.webp" alt=""></a>
+                <a href="#"><img src="img/img_main//boyimg-2.webp" alt=""></a>
+                <a href="#"><img src="img/img_main/boyimg-3.webp" alt=""></a>
+                 <a href="#"><img src="img/img_main/boyimg-3.webp" alt=""></a>
+            </div>
+        </div>
+    </div>
+    <!-- Sản phẩm cho nam tại trang chủ -->
+    <div class="product-boy">
+        <div class="container">
+            <div class="product-header">
+                <p>PRODUCT FOR MAN</p>
+            </div>
+            <div class="product-container">
+                <div class="product-item">
+                    <div class="item-top">
+                        <a href="chitietsanpham.html"><img src="img/img_aonam/left-1.jpg" alt=""></a>
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Áo Polo Tay Ngắn Form Vừa KS25SS19P-SC</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>900000<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <a href="chitietsanpham.html"> <i class="fa-solid fa-cart-shopping"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/boyimg-6.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Quần Jeans Nam Form Vừa JN25SS26C-RG</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>1243892<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/boyimg-7.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Quần Jeans Nam Form Vừa JN25SS26C-RG</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>926107<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/boyimg-8.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Quần Jeans Nam Form Vừa JN25SS26C-RG</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>381025<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/boyimg-9.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Quần Jeans Nam Form Vừa JN25SS26C-RG</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>1505731<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/boyimg-10.jpg" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Áo Sơ Mi Nam Tay Ngắn Form Ôm WS25SS55C-SD</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>1505731<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/boyimg-11.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Quần Jeans Nam Form Vừa JN25SS26C-RG</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>1381657<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/boyimg-12.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Quần Jeans Nam Form Vừa JN25SS26C-RG</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>1775936<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end Sản phẩm cho nam tại trang chủ -->
+
+    <!-- Sản phẩm cho nữ tại trang chủ -->
+    <div class="product-girl">
+        <div class="container">
+            <div class="product-header">
+                <p>PRODUCT FOR GIRL</p>
+            </div>
+            <div class="product-container">
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/girlimg-9.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Áo Thun Freelancer In Họa Tiết...</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>668212<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/girlimg-2.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Quần Short Jean Đen Cạp Cao...</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>668212<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/girlimg-3.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Quần Short Jean Đen Cạp Cao...</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>1252389<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/girlimg-4.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Quần Short Jean Đen Cạp Cao...</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>486237<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/girlimg-5.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Áo Thun Freelancer In Hình “Nature...</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>1578920<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/girlimg-6.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Áo Thun Freelancer In Hình “Nature...</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>1311034<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/girlimg-7.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Áo Thun Freelancer In Hình “Nature...</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>396783<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="item-top">
+                        <img src="img/img_main/girlimg-8.webp" alt="">
+                    </div>
+                    <div class="item-bottom">
+                        <div class="item-bottom-describle">
+                            <p>Áo Thun Freelancer In Hình “Nature...</p>
+                        </div>
+                        <div class="item-bottom-last">
+                            <p>682445<span>đ</span></p>
+                            <div class="item-icon">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- end Sản phẩm cho nữ tại trang chủ -->
+
+    <!-- blog tại trang chủ -->
+    <div class="blog-container">
+        <div class="container">
+            <div class="blog-header">
+                <p>BLOG</p>
+            </div>
+            <div class="blog-container-item">
+                <div class="blog-item">
+                    <div class="blog-item-top">
+                        <img src="img/img_main/blogimg-1.webp" alt="">
+                    </div>
+                    <div class="blog-item-bottom">
+                        <div class="blog-date">
+                            <p>10/6/2025</p>
+                        </div>
+                        <a href="#">
+                            <h3>
+                                NÂNG TẦM PHONG CÁCH HÈ VỚI ÁO POLO SỌC NGANG
+                            </h3>
+                        </a>
+                        <p>
+                            Mùa hè là thời điểm lý tưởng để làm mới phong cách với những thiết kế thoải mái và cá tính.
+                            Áo polo...
+                        </p>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="blog-item-top">
+                        <img src="img/img_main/blogimg-2.webp" alt="">
+                    </div>
+                    <div class="blog-item-bottom">
+                        <div class="blog-date">
+                            <p>10/6/2025</p>
+                        </div>
+                        <a href="#">
+                            <h3>
+                                BASIC BUT NEVER BORING - ÁO THUN TRƠN NỮ DỄ PHỐI, TÔN DÁNG​
+                            </h3>
+                        </a>
+                        <p>
+                            Khám phá thiết kế áo thun basic nữ form ôm nhẹ, chất liệu co giãn mịn mát từ Freelancer
+                            Fashion –...
+                        </p>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="blog-item-top">
+                        <img src="img/img_main/blogimg-3.jpg" alt="">
+                    </div>
+                    <div class="blog-item-bottom">
+                        <div class="blog-date">
+                            <p>10/6/2025</p>
+                        </div>
+                        <a href="#">
+                            <h3>
+                                TỎA SÁNG PHONG CÁCH MÙA HÈ CÙNG OUTFIT NĂNG ĐỘNG​
+                            </h3>
+                        </a>
+                        <p>
+                            Thoải mái tận hưởng ngày hè xanh mát với outfit năng động từ JOHN HENRY. Sự kết hợp giữa
+                            chiếc po...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-blog">
+                <a href="blog.html">
+                    <p>
+                        Xem tất cả
+                    </p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!--  end blog tại trang chủ -->
+
+    <!-- footer -->
+
+
+    <footer>
+        <div class="container">
+            <div class="address">
+                <p class="footer-header">THÔNG TIN LIÊN HỆ</p>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-house"></i>
+                        <p>Công ty TNHH T.M.G</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>
+                            172 Nguyễn Trãi, P.Bến Thành, Q1, HCM</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <p>0914 516 446 - 0906 954 368</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>
+                            cskh@duchai-styles.com</p>
+                    </li>
+                </ul>
+                <div class="da-thong-bao">
+                    <img src="img/img_main/dathongbao.webp" alt="">
+                </div>
+            </div>
+            <div class="our-company">
+                <p class="footer-header">
+                    CÔNG TY
+                </p>
+                <ul>
+                    <li>Về chúng tôi</li>
+                    <li>Xu hướng</li>
+                    <li>Liên hệ</li>
+                    <li>Tuyển dụng</li>
+                    <li>Theo dõi đơn hàng</li>
+                    <li>Nhượng quyền</li>
+                    <li>Ưu đãi VIP member</li>
+                </ul>
+            </div>
+            <div class="policy">
+                <p class="footer-header">CHÍNH SÁCH</p>
+                <ul>
+                    <li>Đăng ký thành viên</li>
+                    <li>Hướng dẫn thanh toán</li>
+                    <li>Giao hàng và phí vận chuyển</li>
+                    <li>Chính sách đổi trả</li>
+                    <li>Chính sách bảo mật</li>
+                    <li>Điều khoản và thanh toán</li>
+                </ul>
+            </div>
+            <div class="contact">
+                <p class="footer-header">
+                    KẾT NỐI VỚI CHÚNG TÔI
+                </p>
+                <div class="send-mail">
+                    <input type="email" placeholder="Email">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </div>
+                <div class="social">
+                    <div class="fb-1">
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                            <p>ĐỨC HẢI</p>
+                        </a>
+                    </div>
+                    <div class="fb-2">
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i>
+                            <p>FREELANCER</p>
+                        </a>
+                    </div>
+                    <div class="insta">
+                        <a href="https://www.instagram.com/" target="_blank"><img src="img/img_main/insta.png" alt="">
+                            <p>ĐỨC HẢI</p>
+                        </a>
+                    </div>
+                    <div class="ytb">
+                        <a href="https://www.youtube.com/" target="_blank"><img src="img/img_main/ytb.webp" alt="">
+                            <p>DucHaiStyles</p>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="checkout-methob">
+                    <p>PHƯƠNG THỨC THANH TOÁN</p>
+                    <div class="img">
+                        <img src="img/img_main/mm.webp" alt="">
+                        <img src="img/img_main/vnp.webp" alt="">
+                        <img src="img/img_main/spp.webp" alt="">
+                    </div>
+                </div>
+                <div class="delivery">
+                    <p>ĐỐI TÁC VẬN CHUYỂN</p>
+                    <div class="img">
+                        <img src="img/img_main/nj.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2025 Duc Hai & Freelancer</p>
+        </div>
+
+    </footer>
+
+    <!-- end footer -->
+
+    <!-- social va lien he  -->
+    <div class="social-fixed">
+        <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" target="_blank"></a><img src="img/img_main/insta.png" alt="">
+    </div>
+    <div class="contact-fixed">
+        <a href="#"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://www.facebook.com/messages/" target="_blank"><i class="fa-brands fa-facebook-messenger"></i></a>
+        <a href="https://chat.zalo.me/" target="_blank"><img src="img/img_main/zll.webp" alt=""></a>
+    </div>
+    <!-- end social va lien he  -->
+    <script src="js/store.js"></script>
+    <script src="js/jsforall.js"></script>
+</body>
+
+</html>

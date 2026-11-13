@@ -1,0 +1,185 @@
+:root {
+    --text-color: #ffffff;
+    --price-color: red;
+    --bgcolor1: #ffffff;
+    --bgcolor2: #FEF1F9;
+    --bgbutton: #C21935;
+    --submenu: #ffffff;
+    --color-hover1: rgb(255, 0, 0);
+    --header-color: #951329;
+    --subtext: #8f8f8f;
+}
+body{
+
+    margin: 0;
+    /* Xóa lề mặc định của body */
+    padding: 0;
+    transition: all 0.5s ease;
+}
+.taotaikhoan{
+    margin: 250px;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    
+}
+.taotaikhoan .taotk-container {
+    border: 3px solid #ddd;
+    text-align: center;
+  width: 70%;
+  height: auto;
+    
+}
+.taotaikhoan .taotk-container h3{
+    font-size: 2rem;
+    margin: 10px 0 20px;
+    color: var(--header-color);
+    display: block;
+}
+.taotaikhoan .taotk-container > p:nth-child(2){
+    color: var(--subtext);
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.taotaikhoan .taotk-container > input{
+    width: 70%;
+    padding: 10px 10px;
+    margin: 10px 0;
+}
+.taotaikhoan .taotk-container .sex{
+    display: flex;
+    align-items: center;
+     margin-left:100px ;
+}
+.taotaikhoan .taotk-container .sex input{
+    width:20px;
+    
+}
+.taotaikhoan .taotk-container .sex label{
+    margin-right: 10px;
+}
+#submit{
+    width: 50%;
+    background-color: var(--bgbutton);
+    cursor: pointer;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.5rem;
+    border: none;
+}
+.back{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 30px;
+}
+.back i{
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+.back p{
+    font-size: 1.3rem;
+}
+.back:hover *{
+    color: var(--color-hover1);
+}
+
+
+.xemmatkhau{
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+     margin-left:90px
+}
+.xemmatkhau input{
+    margin: 0 10px;
+}
+.error-message{
+    color: red;
+    font-size: 0.9rem;
+    height: 1rem;
+    margin: 0 0 10px 0;
+
+}
+@media screen and (max-width: 1024px) {
+    .taotaikhoan {
+        margin: 180px 20px;
+        padding: 30px 0;
+    }
+    .taotaikhoan .taotk-container{
+        width:70%;
+    }
+
+}
+
+
+/* Responsive cho 700px trở xuống */
+@media screen and (max-width: 700px) {
+    .taotaikhoan {
+        margin: 150px 20px;
+        padding: 30px 0;
+    }
+
+    .taotaikhoan .taotk-container {
+        width: 90%;
+    }
+
+    .taotaikhoan .taotk-container > input,
+    .xemmatkhau {
+        width: 90%;
+        margin-left: 0;
+    }
+
+    .taotaikhoan .taotk-container .sex {
+        margin-left: 20px;
+    }
+
+    #submit {
+        width: 70%;
+    }
+}
+
+/* Responsive cho 600px trở xuống */
+@media screen and (max-width: 600px) {
+    .taotaikhoan .taotk-container h3 {
+        font-size: 1.8rem;
+    }
+
+    .taotaikhoan .taotk-container > p:nth-child(2),
+    .back p {
+        font-size: 1rem;
+    }
+
+    .xemmatkhau {
+        justify-content: start;
+    }
+}
+
+/* Responsive cho 440px trở xuống */
+@media screen and (max-width: 440px) {
+
+    .taotaikhoan .taotk-container h3 {
+        font-size: 1.5rem;
+    }
+
+    .taotaikhoan .taotk-container > input,
+    .xemmatkhau {
+        width: 90%;
+    }
+
+    #submit {
+        width: 90%;
+        font-size: 1.2rem;
+    }
+
+    .back i {
+        font-size: 1rem;
+    }
+
+    .back p {
+        font-size: 1rem;
+    }
+}

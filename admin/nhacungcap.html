@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quản lý Nhà Cung Cấp</title>
+  <link rel="stylesheet" href="./admincss/cssforalladmin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <header>
+    <div class="user-menu">
+      Hải <i class="fa-solid fa-sort-down"></i>
+      <div class="dropdown">
+        <a href="#">Đăng xuất</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav>
+      <a href="admin.html" ><i class="fa-solid fa-user" style="font-size:0.8rem"></i>Thông tin tài khoản</a>
+      <a href="admin-order.html"><i class="fa-solid fa-box-open" style="font-size:0.6rem"></i>Quản lý đơn đặt hàng</a>
+      <a href="admin-loaisp.html"><i class="fa-solid fa-tags" style="font-size:small"></i>Quản lý sản phẩm</a>
+      <a href="thongke.html"><i class="fa-solid fa-chart-line" style="font-size:small"></i>Thống kê bán hàng</a>
+      <a href="hoadonnhap.html"><i class="fa-solid fa-file-invoice" style="font-size:1.1rem"></i>Hóa đơn nhập</a>
+      <a href="nhacungcap.html" class="active"><i class="fa-solid fa-truck" style="font-size:0.7rem"></i>Nhà cung cấp</a>
+      <a href="khachhang.html"><i class="fa-solid fa-user-friends" style="font-size:0.7rem"></i>Khách hàng</a>
+      <a href="nhanvien.html"><i class="fa-solid fa-user-tie" style="font-size:0.9rem"></i>Nhân viên</a>
+      <a href="#"><i class="fa-solid fa-blog" style="font-size:small"></i>Blog</a>
+    </nav>
+
+    <div class="content">
+      <h2>Danh sách Nhà Cung Cấp</h2>
+
+      <div class="filter-bar">
+        <input type="text" placeholder="Tìm kiếm nhà cung cấp...">
+        <button class="btn btn-add" onclick="openModal()">+ Thêm nhà cung cấp</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Mã NCC</th>
+            <th>Tên NCC</th>
+            <th>Điện thoại</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="supplier-table">
+          <tr>
+            <td data-label="STT">1</td>
+            <td data-label="Mã">NCC001</td>
+            <td data-label="Tên NCC">ABC Fashion</td>
+            <td data-label="Số điện thoại">0909999999</td>
+            <td data-label="Email">abc@gmail.com</td>
+            <td data-label="Địa chỉ">Hà Nội</td>
+            <td data-label="Thao tác">
+              <button class="btn btn-edit"
+                onclick="openModal('NCC001', 'ABC Fashion', '0909999999', 'abc@gmail.com', 'Hà Nội')"><i
+                  class="fas fa-pen"></i></button>
+              <button class="btn btn-delete"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button><<</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>>></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cửa sổ Thêm/Sửa -->
+  <div id="supplierModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">x</span>
+      <h3 id="modalTitle">Thêm nhà cung cấp</h3>
+      <input type="text" id="supplierId" placeholder="Mã nhà cung cấp">
+      <input type="text" id="supplierName" placeholder="Tên nhà cung cấp">
+      <input type="text" id="supplierPhone" placeholder="Số điện thoại">
+      <input type="email" id="supplierEmail" placeholder="Email">
+      <input type="text" id="supplierAddress" placeholder="Địa chỉ">
+      <div class="modal-buttons">
+        <button class="btn btn-add" onclick="saveSupplier()">Lưu</button>
+        <button class="btn btn-delete" onclick="closeModal()">Hủy</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./adminjs/nhacungcap.js">
+
+  </script>
+</body>
+
+</html>

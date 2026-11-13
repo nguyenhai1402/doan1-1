@@ -1,0 +1,199 @@
+/* KHởi tạo các biến */
+:root {
+    --text-color: #ffffff;
+    --price-color: red;
+    --bgcolor1: #ffffff;
+    --bgcolor2: #FEF1F9;
+    --bgbutton: #C21935;
+    --submenu: #ffffff;
+    --color-hover1: rgb(255, 0, 0);
+    --header-color: #951329;
+    --subtext: #8f8f8f;
+}
+
+/* Đẩy nội dung blog xuống để tránh che bởi header */
+.blog-container {
+    margin-top: 200px;
+}
+/* end Đẩy nội dung blog xuống để tránh che bởi header */
+
+.product-nav {
+    display: flex;
+    gap: 10px;
+    padding: 20px 0;
+    align-items: center;
+}
+
+.product-nav a {
+    font-size: 1.2rem;
+}
+
+.product-nav span+a p {
+    font-size: 1.2rem;
+}
+
+.product-nav a:hover {
+    color: var(--color-hover1);
+}
+
+.product-nav span+a p:hover {
+    color: var(--color-hover1);
+}
+
+.product-nav span {
+    color: var(--subtext);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    font-weight: 600;
+}
+
+.product-nav>p:last-child {
+    font-size: 1.2rem;
+    color: var(--subtext);
+}
+
+.blog-detail-container .phan-mot {
+    margin: 20px;
+    text-align: center;
+}
+
+/* Tiêu đề chính của bài viết */
+.phan-mot>h3 {
+    font-weight: 600;
+    font-size: 2rem;
+}
+/* end Tiêu đề chính của bài viết */
+/* Ngày đăng bài viết */
+.phan-mot>.subtext {
+    color: var(--subtext);
+    font-size: 1.2rem;
+}
+/* end Ngày đăng bài viết */
+/* Ảnh đầu bài viết */
+.phan-mot>img {
+    width: 70%;
+    margin: 30px 0;
+}
+/* end Ảnh đầu bài viết */
+
+/* Đoạn mô tả đặc biệt có đường viền đỏ bên trái */
+.phan-mot>.bottom {
+    font-size: 1.3rem;
+    border-left: 6px solid #ff0000;
+    padding: 10px 20px;
+    display: flex;
+    text-align: left;
+    align-items: center;
+}
+/* end Đoạn mô tả đặc biệt có đường viền đỏ bên trái */
+
+/* Các tiêu đề nhỏ trong phần nội dung */
+.phan-hai>.header {
+    font-weight: 600;
+    font-size: 2rem;
+    margin: 10px 0;
+}
+/* end Các tiêu đề nhỏ trong phần nội dung */
+.phan-hai>.subtext {
+    margin: 10px 0;
+    font-size: 1.4rem;
+    color: var(--subtext);
+}
+
+.phan-hai>ul,
+.phan-ba>ul {
+    margin-left: 20px;
+}
+
+.phan-hai>ul>li {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.phan-hai>img {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.phan-ba .header {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 50px 0 20px;
+}
+
+.phan-ba .sub-header {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.phan-ba>ul>li {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.phan-ba>ul>li>a {
+    font-size: 1.2rem;
+}
+
+.phan-ba>ul>li>a:hover {
+    color: var(--color-hover1);
+    transition: all 0.3s ease;
+}
+
+.phan-ba .poem {
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-left: 6px solid #ff0000;
+    padding: 10px 20px;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.phan-ba .tags {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--subtext);
+}
+
+.phan-ba .tags a>span {
+    font-style: italic;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--subtext);
+}
+
+.phan-ba .tags a>span:hover {
+    color: var(--color-hover1);
+}
+
+.blog-detail-container>.blog-header {
+    border: none;
+    background-color: var(--bgbutton);
+    border-radius: 0;
+    margin-top: 50px;
+}
+
+.blog-detail-container>.blog-header p {
+    color: var(--text-color);
+}
+
+.blog-detail-container .blog-container-item {
+    border: none;
+}
+
+.blog-detail-container .blog-item-top {
+    aspect-ratio: 6/3;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+}
+
+/* Phóng nhẹ ảnh khi hover */
+.blog-detail-container .blog-item-top>img:hover {
+    scale: 1.1;
+    transition: all 0.3s ease
+}
+/* end Phóng nhẹ ảnh khi hover */

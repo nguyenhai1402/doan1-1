@@ -1,0 +1,20 @@
+/* ===== store.css - giao diện bổ sung cho giỏ hàng / yêu thích / chi tiết sản phẩm ===== */
+/* Icon trên header */
+.hd-icon { position: relative; }
+.hd-icon a { position: relative; display: inline-block; }
+.hd-badge { position: absolute; top: -8px; right: -10px; min-width: 20px; height: 20px; padding: 0 5px;
+    border-radius: 10px; background: var(--bgbutton); color: #fff; font-size: 12px; font-weight: bold;
+    display: flex; align-items: center; justify-content: center; }
+/* Trái tim đã thích */
+.fa-heart.liked { color: red; }
+/* Thông báo nhỏ */
+.jh-toast { position: fixed; right: 20px; bottom: 30px; z-index: 3000; background: #333; color: #fff;
+    padding: 12px 20px; border-radius: 8px; font-size: 1.1rem; opacity: 0; transform: translateY(20px);
+    transition: all .3s ease; }
+.jh-toast.show { opacity: 1; transform: translateY(0); }
+/* Chi tiết sản phẩm: size đang chọn, thông báo, nút yêu thích */
+.product-detail-right .size > ul > li.selected { outline: 3px solid #000; outline-offset: 2px; background: var(--bgbutton); }
+.product-detail-right .size > ul > li:not(.run-out):hover { background: var(--bgbutton); }
+.ct-wish { margin: 15px 0; font-size: 1.2rem; cursor: pointer; display: inline-block; }
+.ct-wish:hover { color: var(--color-hover1); }
+.ct-wish .liked { color: red; }

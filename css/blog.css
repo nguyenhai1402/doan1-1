@@ -1,0 +1,123 @@
+
+/* KHởi tạo các biến */
+:root {
+    --text-color: #ffffff;
+    --price-color: red;
+    --bgcolor1: #ffffff;
+    --bgcolor2: #FEF1F9;
+    --bgbutton: #C21935;
+    --submenu: #ffffff;
+    --color-hover1: rgb(255, 0, 0);
+    --header-color: #951329;
+    --subtext: #8f8f8f;
+}
+
+/* Thanh chỉ đường: Trang chủ / Blog */
+.product-nav {
+    display: flex;
+    gap: 10px;
+    margin: 50px 0;
+    align-items: center;
+}
+
+.product-nav a {
+    font-size: 1.2rem;
+}
+
+.product-nav a:hover {
+    color: var(--color-hover1);
+}
+
+.product-nav span {
+    color: var(--subtext);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    font-weight: 600;
+}
+
+.product-nav p {
+    font-size: 1.3rem;
+    color: var(--subtext);
+}
+/* end Thanh chỉ đường: Trang chủ / Blog */
+
+.blog-container-item {
+    border-top: 0px solid red;
+    border-bottom: 0px solid red;
+    border-radius: 0;
+    
+}
+
+/* Container chính bao bọc nội dung blog, tạo khoảng cách trên dưới */
+.blog-container {
+    padding: 30px 0;
+}
+/* èn Container chính bao bọc nội dung blog, tạo khoảng cách trên dưới */
+
+/* Khung chứa ảnh đầu blog, tỷ lệ khung hình 6:3, bo tròn góc */
+.blog-item-top {
+    aspect-ratio: 6/3; 
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+}
+/*end Khung chứa ảnh banner blog, tỷ lệ khung hình 6:3, bo tròn góc */
+
+/* Ảnh co giãn vừa khung và có hiệu ứng khi hover */
+.blog-item-top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.blog-item-top img:hover {
+    transform: scale(1.1);
+}
+/*end Ảnh co giãn vừa khung và có hiệu ứng khi hover */
+
+/* Tiêu đề bài viết blog */
+.blog-item-bottom a h3{
+    text-align: center;
+    margin: 10px 0;
+}
+/* end Tiêu đề bài viết blog */
+
+/* Phần dưới mỗi blog: ngày đăng và nút xem thêm */
+.blog-item-bottom .blog-last {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 10px 0 0;
+}
+.blog-item-bottom .blog-last a:hover p{
+    color: var(--color-hover1);
+}
+/* end Phần dưới mỗi blog: ngày đăng và nút xem thêm */
+
+.product-navpage {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+
+}
+
+.product-navpage i {
+    color: #999999;
+    font-size: 1.2rem;
+}
+
+.product-navpage i:hover {
+    color: var(--color-hover1);
+    transition: all 0.3s ease;
+}
+
+.product-navpage p {
+    color: #555555;
+    font-size: 1.3rem;
+}
+.blog-item-bottom > p{
+    color: #555555;
+}
