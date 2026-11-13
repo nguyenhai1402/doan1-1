@@ -18,3 +18,5 @@
 .ct-wish { margin: 15px 0; font-size: 1.2rem; cursor: pointer; display: inline-block; }
 .ct-wish:hover { color: var(--color-hover1); }
 .ct-wish .liked { color: red; }
+
+/* ===== Trang giỏ hàng / yêu thích / tìm kiếm ===== */

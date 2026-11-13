@@ -63,6 +63,21 @@ const JH = {
         });
     },
 
+    // Phí vận chuyển: miễn phí từ 300.000đ, dưới mức đó 25.000đ
+    SHIP_FREE: 300000, SHIP_FEE: 25000,
+    shipFee(sub) { return sub >= this.SHIP_FREE || sub === 0 ? 0 : this.SHIP_FEE; },
+
+    // Gắn trái tim cho các thẻ .product-item (gọi lại được khi trang vẽ thẻ động)
+    bindCards(root) {
+        (root || document).querySelectorAll(".product-item").forEach(card => {
+            const heart = card.querySelector(".item-icon .fa-heart");
+            if (!heart || heart.dataset.wid || !card.querySelector(".item-top img")) return;
+            heart.dataset.wid = JH.cardData(card).id; heart.style.cursor = "pointer";
+            heart.addEventListener("click", () => JH.toggleWish(JH.cardData(card)));
+        });
+        JH.refresh();
+    },
+
     // Đọc thông tin 1 thẻ sản phẩm (.product-item) trên trang danh sách
     cardData(card) {
         const img = card.querySelector(".item-top img"), a = card.querySelector(".item-top a");
@@ -85,13 +100,14 @@ document.addEventListener("DOMContentLoaded", () => {
             '<div class="hd-icon"><a href="giohang.html" title="Giỏ hàng"><i class="fa-solid fa-cart-shopping"></i><span class="hd-badge" id="cartBadge">0</span></a></div>');
     }
     // 2. Gắn trái tim cho mọi thẻ sản phẩm
-    document.querySelectorAll(".product-item").forEach(card => {
-        const heart = card.querySelector(".item-icon .fa-heart");
-        if (!heart || !card.querySelector(".item-top img")) return;
-        const p = JH.cardData(card);
-        heart.dataset.wid = p.id; heart.style.cursor = "pointer";
-        heart.addEventListener("click", () => JH.toggleWish(JH.cardData(card)));
-    });
+    JH.bindCards();
+    // 2b. Tìm kiếm trên header -> timkiem.html?q=...
+    const sInput = document.querySelector(".header-mid-search input"), sBtn = document.querySelector(".header-mid-search a");
+    if (sInput) {
+        const go = () => { const q = sInput.value.trim(); if (q) location.href = "timkiem.html?q=" + encodeURIComponent(q); };
+        sInput.addEventListener("keydown", e => { if (e.key === "Enter") go(); });
+        if (sBtn) sBtn.addEventListener("click", e => { e.preventDefault(); go(); });
+    }
     // 3. Hiển thị trạng thái ban đầu
     JH.refresh();
 });

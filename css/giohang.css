@@ -1,0 +1,54 @@
+/* css cho giohang.html, yeuthich.html, timkiem.html */
+.page-main { padding-top: 200px; min-height: 70vh; }
+.product-nav { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; }
+.product-nav a, .product-nav p { font-size: 1.2rem; }
+.product-nav p { color: var(--subtext); }
+.product-nav span { color: var(--subtext); font-weight: 600; }
+.product-nav a:hover { color: var(--color-hover1); }
+.page-title { text-align: center; color: var(--header-color); font-size: 2rem; margin: 10px 0 25px; }
+.empty-box { text-align: center; padding: 60px 0; font-size: 1.3rem; color: var(--subtext); }
+.empty-box a { display: inline-block; margin-top: 20px; padding: 12px 30px; background: var(--bgbutton); color: #fff; border-radius: 6px; font-weight: 600; }
+.empty-box a:hover { background: var(--header-color); }
+
+/* Giỏ hàng */
+.cart-wrap { display: flex; gap: 30px; align-items: flex-start; margin-bottom: 50px; }
+.cart-list { width: 68%; }
+.cart-item { display: flex; gap: 15px; align-items: center; padding: 15px 0; border-bottom: 2px solid #ddd; }
+.cart-item img { width: 90px; border-radius: 8px; }
+.cart-info { flex: 1; }
+.cart-info a { font-size: 1.2rem; font-weight: 600; }
+.cart-info a:hover { color: var(--color-hover1); }
+.cart-info p { color: var(--subtext); margin: 5px 0; }
+.cart-info .unit { color: var(--price-color); font-weight: 600; }
+.qty { display: flex; align-items: center; border: 2px solid #ddd; border-radius: 6px; }
+.qty button { width: 34px; height: 34px; border: none; background: none; font-size: 1.3rem; cursor: pointer; }
+.qty button:hover { color: var(--color-hover1); }
+.qty span { width: 36px; text-align: center; font-size: 1.1rem; }
+.cart-line { width: 120px; text-align: right; font-weight: 600; font-size: 1.2rem; color: var(--price-color); }
+.cart-del { cursor: pointer; font-size: 1.3rem; color: var(--subtext); }
+.cart-del:hover { color: var(--color-hover1); }
+.cart-sum { width: 32%; background: var(--bgcolor2); border-radius: 10px; padding: 20px; }
+.cart-sum h3 { margin-bottom: 15px; color: var(--header-color); }
+.cart-sum .row-sum { display: flex; justify-content: space-between; margin: 10px 0; font-size: 1.1rem; }
+.cart-sum .row-sum.total { border-top: 2px solid #ddd; padding-top: 12px; font-weight: 700; font-size: 1.3rem; color: var(--price-color); }
+.cart-sum .note { font-size: .95rem; color: var(--subtext); margin-top: 8px; }
+.btn-main { display: block; width: 100%; margin-top: 18px; padding: 14px; border: none; border-radius: 6px; background: var(--bgbutton); color: #fff; font-size: 1.2rem; font-weight: 600; cursor: pointer; text-align: center; }
+.btn-main:hover { background: var(--header-color); }
+.btn-sub { display: block; text-align: center; margin-top: 12px; color: rgb(30, 90, 240); }
+
+/* Yêu thích + tìm kiếm dùng lại lưới .product-container của cssforall.css */
+.page-main .product-container { margin: 20px 0 50px; }
+.wish-del { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.wish-del:hover { color: var(--color-hover1); }
+.product-item { position: relative; }
+.search-info { text-align: center; color: var(--subtext); margin-bottom: 10px; font-size: 1.1rem; }
+
+@media screen and (max-width: 900px) {
+    .page-main { padding-top: 180px; }
+    .cart-wrap { flex-direction: column; } .cart-list, .cart-sum { width: 100%; }
+    .page-main .product-container { grid-template-columns: repeat(2, 1fr); }
+}
+@media screen and (max-width: 600px) {
+    .page-main { padding-top: 150px; }
+    .cart-item { flex-wrap: wrap; } .cart-line { width: auto; }
+}
