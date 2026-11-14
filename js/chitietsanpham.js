@@ -153,10 +153,6 @@ document.querySelector(".mua-ngay").addEventListener("click", function () {
     const sp = laySanPham()
     if (!sp || !JH.requireLogin()) return
     sessionStorage.setItem("checkoutItems", JSON.stringify([sp]))
-    // giữ định dạng cũ để thanhtoan.js hiện tại vẫn chạy (sẽ nâng cấp ở bước thanh toán)
-    localStorage.setItem("sanpham", JSON.stringify({
-        ten: sp.ten, mau: sp.mau + " / " + sp.size, gia: String(sp.gia), anh: sp.anh, soluong: sp.soLuong
-    }))
     window.location.href = "thanhtoan.html"
 })
 

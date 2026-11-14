@@ -43,9 +43,12 @@ allbanner1.forEach(function (imgbanner, index) {
     imgbanner.style.left = index * 100 + "%";
 
     // ấn vào nút sẽ dịch banner theo vị trí của dot tương ứng banner
-    dotBanner[index].addEventListener("click", () => {
-        handleBanner(index)
-    })
+    // (kiểm tra dotBanner[index] có tồn tại để tránh lỗi khi số ảnh nhiều hơn số chấm)
+    if (dotBanner[index]) {
+        dotBanner[index].addEventListener("click", () => {
+            handleBanner(index)
+        })
+    }
     // end ấn vào nút sẽ dịch banner theo vị trí của dot tương ứng banner
 })
 let indexBanner = 0
@@ -61,8 +64,8 @@ function navigationBanner() {
 function handleBanner(index) {
     bannerContain.style.left = "-" + index * 100 + "%"
     let dotActive = document.querySelector(".dot .active")
-    dotActive.classList.remove("active")
-    dotBanner[index].classList.add("active")
+    if (dotActive) dotActive.classList.remove("active")
+    if (dotBanner[index]) dotBanner[index].classList.add("active")
 }
 //  Mỗi 5 giây banner sẽ cuộn sang ngang 1 lần
 if (bannerContain) setInterval(navigationBanner, 3000) // chỉ chạy khi trang có banner
@@ -83,7 +86,7 @@ const usernameDisplay = document.getElementById("usernameDisplay");
 const logoutOption = document.getElementById("logoutOption");
 
 
-loginBtn.addEventListener("click", function () {
+if (loginBtn) loginBtn.addEventListener("click", function () {
     const email = emailInput.value.trim();
     const password = passwordInput.value;
     const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
@@ -138,7 +141,9 @@ logoutOption.addEventListener("click", function () {
 const toggleBtn = document.querySelector(".menu-toggle");
 const headerBottom = document.querySelector(".header-bottom");
 
-toggleBtn.addEventListener("click", () => {
-    headerBottom.classList.toggle("active");
-});
+if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+        headerBottom.classList.toggle("active");
+    });
+}
 

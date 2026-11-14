@@ -1,73 +1,116 @@
-
+// ===== thanhtoan.js - Trang đặt hàng (nhận nhiều sản phẩm từ giỏ hàng hoặc "Mua ngay") =====
+// Lưu ý: dùng hàm JH.money() và JH.shipFee() viết sẵn trong store.js (nhớ nạp store.js trước file này)
 
 window.addEventListener("DOMContentLoaded", function () {
     // Thông báo khi mở trang
     alert("Nhập mã duchaitrian để được giảm giá 10% tổng hàng hóa");
-
 })
 
-// Lấy dữ liệu sản phẩm từ localStorage
+// Danh sách mã giảm giá. loai: "phantram" (giảm theo %) hoặc "tien" (giảm số tiền cố định)
+const maGiamGia = {
+    duchaitrian: { loai: "phantram", giatri: 10 },
+    giam50k: { loai: "tien", giatri: 50000 }
+}
 
-let sp//khai báo biến lấy dữ liệu sanpham từ local storage
-const data = localStorage.getItem("sanpham");
-if (data) {
-    sp = JSON.parse(data);
-    const giaSp = parseInt(sp.gia.replace(/[^0-9]/g, ""));
-    const tong = giaSp * sp.soluong;
-    sp.tong = tong //tổng ban đầu khi chưa giảm giá
-    const html = `
+// Lấy sản phẩm cần đặt (do trang chi tiết / giỏ hàng lưu vào sessionStorage) và người đăng nhập
+let sanphams = JSON.parse(sessionStorage.getItem("checkoutItems")) || []
+const user = JSON.parse(localStorage.getItem("loggedInUser"))
+const tuGioHang = sessionStorage.getItem("checkoutFrom") === "cart"
+
+let tamTinh = 0      // tổng tiền hàng
+let phiShip = 0      // phí vận chuyển
+let tienGiam = 0     // tiền được giảm nhờ mã
+let maDangDung = ""  // mã giảm giá đang áp dụng
+
+// Hiển thị các số tiền ở bảng bên phải
+function capNhatTien() {
+    tamTinh = 0
+    sanphams.forEach(function (sp) {
+        tamTinh += sp.gia * sp.soLuong
+    })
+    phiShip = JH.shipFee(tamTinh)   // từ 300.000đ miễn phí, dưới đó 25.000đ
+
+    tienGiam = 0
+    if (maDangDung !== "") {
+        const ma = maGiamGia[maDangDung]
+        if (ma.loai === "phantram") {
+            tienGiam = Math.round(tamTinh * ma.giatri / 100)
+        } else {
+            tienGiam = ma.giatri
+        }
+    }
+    const tong = tamTinh + phiShip - tienGiam
+
+    document.getElementById("tam-tinh").innerText = tamTinh.toLocaleString("vi-VN")
+    document.getElementById("phi-ship").innerText = phiShip === 0 ? "Miễn phí" : phiShip.toLocaleString("vi-VN") + "đ"
+    document.getElementById("tien-giam").innerText = tienGiam.toLocaleString("vi-VN")
+    document.querySelector(".price-total").innerText = tong.toLocaleString("vi-VN")
+    return tong
+}
+
+// Kiểm tra điều kiện trước khi hiển thị trang
+if (!user) {
+    alert("Vui lòng đăng nhập để đặt hàng.")
+    window.location.href = "index.html"
+} else if (sanphams.length === 0) {
+    alert("Chưa có sản phẩm nào để đặt hàng. Hãy chọn sản phẩm trước.")
+    window.location.href = "giohang.html"
+} else {
+    // Chèn từng sản phẩm vào bảng (trước dòng mã giảm giá)
+    const discountRow = document.querySelector(".product-buy .discount")
+    sanphams.forEach(function (sp) {
+        const html = `
                 <tr class="sanpham">
                     <td>
                         <img src="${sp.anh}" alt="">
-                        <div class="soluong">${sp.soluong}</div>
+                        <div class="soluong">${sp.soLuong}</div>
                     </td>
                     <td>
                         <h6 class="name">${sp.ten}</h6>
-                        <span class="color">${sp.mau}</span>
+                        <span class="color">${sp.mau} / ${sp.size}</span>
                     </td>
-                    <td class="price-root">${giaSp.toLocaleString("vi-VN")}đ</td>
+                    <td class="price-root">${sp.gia.toLocaleString("vi-VN")}đ</td>
                 </tr>
-            `;
+            `
+        discountRow.insertAdjacentHTML("beforebegin", html)
+    })
+    capNhatTien()
 
-    const table = document.querySelector(".product-buy");
-    const discountRow = document.querySelector(".product-buy .discount");
-    if (discountRow) {
-        discountRow.insertAdjacentHTML("beforebegin", html);//chèn sản phẩm mới vào trước div giảm giá
+    // Điền sẵn thông tin khách đã đăng nhập (khách vẫn sửa được)
+    document.getElementById("full-name").value = (user.ho + " " + user.ten).trim()
+    document.getElementById("email").value = user.email
+    document.getElementById("phone").value = user.sdt || ""
+
+    // Link điều hướng: đi từ giỏ hàng thì quay lại giỏ hàng
+    const linkNav = document.querySelector(".product-nav a")
+    const linkQuayLai = document.querySelector(".quaylai")
+    if (tuGioHang) {
+        linkNav.innerText = "Giỏ hàng"
+        linkNav.href = "giohang.html"
+        linkQuayLai.href = "giohang.html"
+    } else {
+        linkNav.innerText = sanphams[0].ten
+        linkNav.href = sanphams[0].link
+        linkQuayLai.href = sanphams[0].link
     }
+}
 
-    // Hiển thị tổng tiền ban đầu
-    const priceTotal = document.querySelector(".price-total");
-    priceTotal.innerText = tong.toLocaleString("vi-VN");
-
-    // Gắn sự kiện cho nút sử dụng giảm giá
-    const nutGiamGia = document.querySelector(".dcuse");
-    let daGiamGia
-    nutGiamGia.addEventListener("click", function (e) {
-        e.preventDefault();//Giữ trang k bị load mất thông tin, để áp dụng mã giảm giá thành coong
-        const ma = document.getElementById("discount").value.trim().toLowerCase();
-        if (ma === "duchaitrian") {
-            const giam = Math.round(tong * 0.9);
-            daGiamGia = true
-            priceTotal.innerText = giam.toLocaleString("vi-VN");
-            sp.tong = giam
-            alert("Áp dụng mã giảm giá thành công! Tổng giảm 10%");
-        }
-        else {
-            if (daGiamGia) {
-                // Nếu đã giảm mà giờ mã sai thì sẽ khôi phục giá gốc
-                priceTotal.innerText = tong.toLocaleString("vi-VN");
-                sp.tong = tong
-                daGiamGia = false;
-            }
-            alert("Mã giảm giá bạn nhập vào không hợp lệ");
-        }
-    });
-};
-
-
+// Gắn sự kiện cho nút sử dụng giảm giá
+document.querySelector(".dcuse").addEventListener("click", function (e) {
+    e.preventDefault()
+    const ma = document.getElementById("discount").value.trim().toLowerCase()
+    if (maGiamGia[ma]) {
+        maDangDung = ma
+        capNhatTien()
+        alert("Áp dụng mã giảm giá thành công!")
+    } else {
+        maDangDung = ""         // mã sai thì bỏ mã đang dùng, trả về giá gốc
+        capNhatTien()
+        alert("Mã giảm giá bạn nhập vào không hợp lệ")
+    }
+})
 
 //Kiểm tra sự hợp lệ khi nhập dữ liệu
-
 document.getElementById("submit-btn").addEventListener("click", function (e) {
     e.preventDefault();
 
@@ -117,51 +160,49 @@ document.getElementById("submit-btn").addEventListener("click", function (e) {
     if (payment.value === "") {
         document.getElementById("error-payment").innerText = "Vui lòng chọn phương thức thanh toán.";
         isValid = false;
-        // console.log(payment.value)
     }
-    // Gửi form nếu hợp lệ
-    if (isValid) {
 
+    if (!isValid) return;
+    if (!user || sanphams.length === 0) return;
 
-        //gán thông tin sản phẩm đặt vào lưu trữ khác để chuyển sang trang thanh toán 
-        let sanphamdat = sp
-        localStorage.setItem("sanphamthanhtoan", JSON.stringify(sanphamdat))
-        // console.log(sanphamdat)
-
-        //end gán thông tin sản phẩm đặt vào lưu trữ khác để chuyển sang trang thanh toán 
-        sessionStorage.setItem("full-name", name);
-        sessionStorage.setItem("email", email);
-        sessionStorage.setItem("phone", phone);
-        sessionStorage.setItem("diachi", address);
-        
-        const order = {
-            name,
-            address,
-            phone,
-            email,
-            items: sp, // lấy từ localStorage hoặc biến toàn cục
-            createdAt: new Date().toISOString(),
-            status: "Chưa xác nhận"
-        };
-
-        let orders = JSON.parse(localStorage.getItem("orders")) || [];
-        orders.push(order);
-        localStorage.setItem("orders", JSON.stringify(orders));
-        window.location.href = "hoadon.html";
-
-
+    // Thanh toán VNPay (giả lập): hộp xác nhận thay cho cổng thanh toán thật
+    // (cách làm đơn giản cho đồ án tĩnh; bản thật cần kết nối cổng VNPay phía máy chủ)
+    let daThanhToan = false
+    if (payment.value === "vnpay") {
+        daThanhToan = confirm("[GIẢ LẬP VNPAY]\nSố tiền: " + capNhatTien().toLocaleString("vi-VN") + "đ\nBấm OK để thanh toán thành công, Cancel để hủy giao dịch.")
+        if (!daThanhToan) {
+            alert("Giao dịch bị hủy. Đơn hàng chưa được tạo.")
+            return
+        }
     }
+
+    // Tạo đơn hàng và lưu vào localStorage (phân hệ quản trị sẽ đọc lại danh sách này)
+    const maDon = "DH" + Date.now()
+    const order = {
+        maDon: maDon,
+        emailKhach: user.email,
+        ngayDat: new Date().toISOString(),
+        trangThai: "Chờ xác nhận",     // Chờ xác nhận, Đã xác nhận, Đang giao, Đã giao, Đã hủy
+        nguoiNhan: { hoTen: name, email: email, sdt: phone, diaChi: address },
+        sanPham: sanphams,
+        tamTinh: tamTinh,
+        phiShip: phiShip,
+        maGiamGia: maDangDung,
+        tienGiam: tienGiam,
+        tongTien: tamTinh + phiShip - tienGiam,
+        phuongThuc: payment.value === "vnpay" ? "VNPay" : "Thanh toán khi nhận hàng",
+        thanhToan: daThanhToan ? "Đã thanh toán" : "Chưa thanh toán"
+    }
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    // Đặt từ giỏ hàng thì xóa giỏ; xóa dữ liệu tạm; nhớ mã đơn để trang hóa đơn hiển thị
+    if (tuGioHang) localStorage.removeItem("cart")
+    sessionStorage.removeItem("checkoutItems")
+    sessionStorage.removeItem("checkoutFrom")
+    sessionStorage.setItem("lastOrderId", maDon)
+    window.location.href = "hoadon.html";
 });
 //end Kiểm tra sự hợp lệ khi nhập dữ liệu
-
-
-
-// Khi rời trang, xóa dữ liệu
-window.addEventListener("beforeunload", function () {
-    localStorage.removeItem("sanpham");
-});
-
-
-
-
-

@@ -7,6 +7,7 @@
     <title>Đặt hàng</title>
     <link rel="stylesheet" href="css/cssforall.css">
     <link rel="stylesheet" href="css/dathang.css">
+    <link rel="stylesheet" href="css/store.css">
 </head>
 
 <body>
@@ -33,7 +34,7 @@
                     <div class="form-group">
                         <input type="email" id="email" name="email" placeholder="Nhập email của bạn">
                         <div class="error-message" id="error-email"></div>
-                        <input type="dienthoai" id="phone" name="dienthoai" placeholder="Nhập số điện thoại của bạn">
+                        <input type="tel" id="phone" name="dienthoai" placeholder="Nhập số điện thoại của bạn">
                         <div class="error-message" id="error-phone"></div>
                     </div>
                     <div class="form-group">
@@ -46,7 +47,7 @@
                         <select id="payment-method" name="payment-method" required>
                             <option value="" disabled selected>Chọn phương thức thanh toán</option>
                             <option value="cash-on-delivery">Thanh toán khi nhận hàng</option>
-                            <option value="credit-card" disabled>Thẻ tín dụng</option>
+                            <option value="vnpay">Thanh toán qua VNPay (giả lập)</option>
                         </select>
                         <div class="error-message"  id="error-payment"></div>
                     </div>
@@ -95,6 +96,18 @@
                             <input id="discount" type="text" placeholder="Mã giảm giá">
                         </td>
                         <td><button class="dcuse">Sử dụng</button></td>
+                    </tr>
+                    <tr class="dong-tien">
+                        <td colspan="2">Tạm tính</td>
+                        <td><span id="tam-tinh">0</span>đ</td>
+                    </tr>
+                    <tr class="dong-tien">
+                        <td colspan="2">Phí vận chuyển</td>
+                        <td><span id="phi-ship">0</span></td>
+                    </tr>
+                    <tr class="dong-tien">
+                        <td colspan="2">Giảm giá</td>
+                        <td>-<span id="tien-giam">0</span>đ</td>
                     </tr>
                     <tr class="total">
                         <td colspan="2">
@@ -216,6 +229,7 @@
 
     </footer>
 
+    <script src="js/store.js"></script>
     <script src="js/thanhtoan.js"></script>
 
 

@@ -20,3 +20,7 @@
 .ct-wish .liked { color: red; }
 
 /* ===== Trang giỏ hàng / yêu thích / tìm kiếm ===== */
+
+/* Các dòng tiền ở trang thanh toán (thanhtoan.html) */
+.product-buy .dong-tien td { padding: 10px 0; }
+.product-buy .dong-tien td:last-child { text-align: right; font-weight: 600; }
