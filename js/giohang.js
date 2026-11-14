@@ -1,16 +1,18 @@
-// ===== giohang.js - Trang giỏ hàng (UCGH02 xem, UCGH03 sửa số lượng, UCGH04 xóa) =====
-const cartBox = document.getElementById("cartBox");
+// ===== giohang.js - Trang giỏ hàng (viết bằng jQuery) =====
+// Xem giỏ, sửa số lượng, xóa sản phẩm, chuyển sang đặt hàng
 
 function renderCart() {
-    const cart = JH.cart();
+    const cart = JH.cart()
     if (cart.length === 0) {
-        cartBox.innerHTML = '<div class="empty-box">Giỏ hàng của bạn đang trống.<br><a href="index.html">Tiếp tục mua sắm</a></div>';
-        JH.refresh();
-        return;
+        $("#cartBox").html('<div class="empty-box">Giỏ hàng của bạn đang trống.<br><a href="index.html">Tiếp tục mua sắm</a></div>')
+        JH.refresh()
+        return
     }
-    const sub = cart.reduce((s, c) => s + c.gia * c.soLuong, 0);
-    const ship = JH.shipFee(sub);
-    const rows = cart.map((c, i) => `
+    let sub = 0
+    let rows = ""
+    $.each(cart, function (i, c) {
+        sub += c.gia * c.soLuong
+        rows += `
         <div class="cart-item">
             <a href="${c.link}"><img src="${c.anh}" alt=""></a>
             <div class="cart-info">
@@ -25,9 +27,11 @@ function renderCart() {
             </div>
             <div class="cart-line">${JH.money(c.gia * c.soLuong)}</div>
             <i class="fa-solid fa-trash cart-del" data-act="xoa" data-i="${i}" title="Xóa"></i>
-        </div>`).join("");
-    const conThieu = JH.SHIP_FREE - sub;
-    cartBox.innerHTML = `
+        </div>`
+    })
+    const ship = JH.shipFee(sub)
+    const conThieu = JH.SHIP_FREE - sub
+    $("#cartBox").html(`
         <div class="cart-wrap">
             <div class="cart-list">${rows}</div>
             <div class="cart-sum">
@@ -40,26 +44,33 @@ function renderCart() {
                 <button class="btn-main" id="btnDatHang">TIẾN HÀNH ĐẶT HÀNG</button>
                 <a class="btn-sub" href="index.html">Tiếp tục mua sắm</a>
             </div>
-        </div>`;
-    JH.refresh();
+        </div>`)
+    JH.refresh()
 }
 
-// Một chỗ lắng nghe cho tất cả nút +, -, xóa (dùng event delegation)
-cartBox.addEventListener("click", function (e) {
-    const act = e.target.dataset.act, i = e.target.dataset.i;
-    const cart = JH.cart();
-    if (act === "tang") cart[i].soLuong++;
-    else if (act === "giam") { if (cart[i].soLuong > 1) cart[i].soLuong--; }
-    else if (act === "xoa") { if (!confirm("Xóa sản phẩm này khỏi giỏ hàng?")) return; cart.splice(i, 1); }
-    else if (e.target.id === "btnDatHang") {
-        if (!JH.requireLogin()) return;               // đặt hàng phải đăng nhập
-        sessionStorage.setItem("checkoutItems", JSON.stringify(cart));
-        sessionStorage.setItem("checkoutFrom", "cart");
-        window.location.href = "thanhtoan.html";
-        return;
-    } else return;
-    JH.set("cart", cart);
-    renderCart();
-});
+// Các nút +, -, xóa được vẽ lại mỗi lần đổi giỏ hàng, nên gắn sự kiện qua #cartBox (.on với selector)
+$("#cartBox").on("click", "[data-act]", function () {
+    const act = $(this).attr("data-act")
+    const i = Number($(this).attr("data-i"))
+    const cart = JH.cart()
+    if (act === "tang") {
+        cart[i].soLuong++
+    } else if (act === "giam") {
+        if (cart[i].soLuong > 1) cart[i].soLuong--
+    } else if (act === "xoa") {
+        if (!confirm("Xóa sản phẩm này khỏi giỏ hàng?")) return
+        cart.splice(i, 1)
+    }
+    JH.set("cart", cart)
+    renderCart()
+})
 
-renderCart();
+// Nút đặt hàng: bắt buộc đăng nhập
+$("#cartBox").on("click", "#btnDatHang", function () {
+    if (!JH.requireLogin()) return
+    sessionStorage.setItem("checkoutItems", JSON.stringify(JH.cart()))
+    sessionStorage.setItem("checkoutFrom", "cart")
+    window.location.href = "thanhtoan.html"
+})
+
+renderCart()

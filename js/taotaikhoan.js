@@ -1,77 +1,72 @@
-
+// ===== taotaikhoan.js - Đăng ký tài khoản (viết bằng jQuery) =====
 
 // hiển thị và ẩn nhìn mật khẩu
-document.getElementById("togglePassword").addEventListener("change", function () {
-    const passwordInput = document.getElementById("matkhau");
-    passwordInput.type = this.checked ? "text" : "password";
+$("#togglePassword").on("change", function () {
+    $("#matkhau").attr("type", this.checked ? "text" : "password");
 });
 
 // end hiển thị và ẩn nhìn mật khẩu
 
-// kiểm tra hợp lệ khi nhập thoong tin đăng ký
-document.getElementById("submit").addEventListener("click", function () {
-    // lấy giá trị của các ô thong tin khi đã nhập
-    const ho = document.getElementById("ho").value.trim();
-    const ten = document.getElementById("ten").value.trim();
-    const gioiTinhInput = document.querySelector('input[name="sex"]:checked');
-    const ngaySinh = document.getElementById("date").value;
-    const sdt = document.getElementById("phone").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const matkhau = document.getElementById("matkhau").value;
-    //nếu Giới tính đã được chọn thì sẽ lấy giá trị của ô được chọn Đó
-    const gioiTinh = gioiTinhInput ? gioiTinhInput.value : "";
+// kiểm tra hợp lệ khi nhập thông tin đăng ký
+$("#submit").on("click", function () {
+    // lấy giá trị của các ô thông tin khi đã nhập
+    const ho = $("#ho").val().trim();
+    const ten = $("#ten").val().trim();
+    const gioiTinh = $('input[name="sex"]:checked').val() || "";
+    const ngaySinh = $("#date").val();
+    const sdt = $("#phone").val().trim();
+    const email = $("#email").val().trim();
+    const matkhau = $("#matkhau").val();
 
-    //dùng regex để kiểm tra tính hợp lệ không có các ký tự sai lệch
-    document.querySelectorAll(".error-message").forEach(el => el.innerText = "");
-    // Duyệt tất cả phần tử có class "error-message" và xóa nội dung trong đó.
+    // xóa các thông báo lỗi cũ
+    $(".error-message").text("");
     let hople = true;
 
+    //dùng regex để kiểm tra tính hợp lệ không có các ký tự sai lệch
     const nameRegex = /^[A-Za-zÀ-ỹ\s]+$/;
     const phoneRegex = /^0\d{9}$/;
     //bắt đầu số 0 và theo sau là 9 số
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!ho || !nameRegex.test(ho)) {
-        document.getElementById("error-ho").innerText = "Họ không hợp lệ.";
+        $("#error-ho").text("Họ không hợp lệ.");
         hople = false;
     }
 
     if (!ten || !nameRegex.test(ten)) {
-        document.getElementById("error-ten").innerText = "Tên không hợp lệ.";
+        $("#error-ten").text("Tên không hợp lệ.");
         hople = false;
     }
 
     if (!gioiTinh) {
-        document.getElementById("error-sex").innerText = "Vui lòng chọn giới tính.";
+        $("#error-sex").text("Vui lòng chọn giới tính.");
         hople = false;
     }
 
     if (!ngaySinh || new Date(ngaySinh) >= new Date()) {
-        document.getElementById("error-date").innerText = "Ngày sinh không hợp lệ.";
+        $("#error-date").text("Ngày sinh không hợp lệ.");
         hople = false;
     }
 
     if (!phoneRegex.test(sdt)) {
-        document.getElementById("error-phone").innerText = "SĐT phải bắt đầu bằng 0 và đủ 10 số.";
+        $("#error-phone").text("SĐT phải bắt đầu bằng 0 và đủ 10 số.");
         hople = false;
     }
 
     if (!emailRegex.test(email)) {
-        document.getElementById("error-email").innerText = "Email không hợp lệ.";
+        $("#error-email").text("Email không hợp lệ.");
         hople = false;
     }
 
     if (matkhau.length < 6) {
-        document.getElementById("error-password").innerText = "Mật khẩu ít nhất 6 ký tự.";
+        $("#error-password").text("Mật khẩu ít nhất 6 ký tự.");
         hople = false;
     }
 
     // Kiểm tra trùng email
     let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-    if (accounts.some((acc) =>{
-        return acc.email===email;
-    } )) {
-        document.getElementById("error-email").innerText = "Email đã tồn tại.";
+    if (accounts.some(function (acc) { return acc.email === email; })) {
+        $("#error-email").text("Email đã tồn tại.");
         hople = false;
     }
 
@@ -89,7 +84,7 @@ document.getElementById("submit").addEventListener("click", function () {
         vaiTro: "customer",
         trangThai: "active",            // active | locked (admin khóa/mở khóa)
         ngayTao: new Date().toISOString(),
-        diaChi: []                      // sổ địa chỉ (làm ở giai đoạn sau)
+        diaChi: []                      // sổ địa chỉ: {id, hoTen, sdt, diaChi, macDinh}
     };
 
     accounts.push(newAccount);
@@ -99,5 +94,4 @@ document.getElementById("submit").addEventListener("click", function () {
     window.location.href = "index.html";
 });
 
-
-// end kiểm tra hợp lệ khi nhập thoong tin đăng ký
+// end kiểm tra hợp lệ khi nhập thông tin đăng ký

@@ -1,0 +1,54 @@
+/* css cho taikhoan.html, donhang.html, quenmatkhau.html (dùng kèm giohang.css) */
+.tk-tabs { display: flex; gap: 5px; border-bottom: 2px solid #ddd; margin-bottom: 25px; }
+.tk-tab { padding: 12px 22px; font-size: 1.2rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; }
+.tk-tab:hover { color: var(--color-hover1); }
+.tk-tab.active { border-bottom-color: var(--bgbutton); color: var(--bgbutton); }
+.tk-panel { max-width: 700px; margin: 0 auto 60px; }
+.tk-row { display: flex; align-items: center; gap: 15px; margin: 14px 0; flex-wrap: wrap; }
+.tk-row label { width: 190px; font-size: 1.1rem; font-weight: 600; }
+.tk-row input[type="text"], .tk-row input[type="password"], .tk-row input[type="date"], .tk-row textarea { flex: 1; min-width: 200px; padding: 10px; border: 2px solid #ddd; font-size: 1.1rem; }
+.tk-row input:focus, .tk-row textarea:focus { outline: none; border-color: var(--bgbutton); }
+.tk-row input[readonly] { background: #f1f1f1; }
+.tk-row small { color: var(--subtext); width: 100%; margin-left: 205px; }
+.tk-error { color: red; font-size: .95rem; width: 100%; margin-left: 205px; }
+.tk-error:empty { display: none; }
+.tk-btn { width: auto; padding: 12px 40px; margin-left: 205px; display: inline-block; }
+.tk-btn-phu { margin-left: 10px; padding: 12px 20px; border: 2px solid #ddd; background: #fff; cursor: pointer; font-size: 1.1rem; }
+.tk-sub { margin: 35px 0 10px; color: var(--header-color); }
+/* Sổ địa chỉ */
+.dc-item { border: 2px solid #ddd; border-radius: 8px; padding: 12px 15px; margin-bottom: 12px; position: relative; }
+.dc-item.mac-dinh { border-color: var(--bgbutton); background: var(--bgcolor2); }
+.dc-item p { margin: 3px 0; }
+.dc-tag { display: inline-block; background: var(--bgbutton); color: #fff; font-size: .85rem; padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+.dc-act { margin-top: 8px; }
+.dc-act span { margin-right: 18px; cursor: pointer; color: rgb(30, 90, 240); }
+.dc-act span:hover { color: var(--color-hover1); }
+/* Quên mật khẩu */
+.qmk-box { max-width: 480px; margin: 0 auto 60px; text-align: center; }
+.qmk-box p { margin-bottom: 15px; font-size: 1.1rem; }
+.qmk-box input { width: 100%; padding: 12px; margin-top: 10px; border: 2px solid #ddd; font-size: 1.1rem; }
+.qmk-box .tk-error { margin-left: 0; text-align: left; }
+/* Đơn hàng của tôi */
+.dh-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 25px; justify-content: center; }
+.dh-tab { padding: 8px 18px; border: 2px solid #ddd; border-radius: 20px; cursor: pointer; font-size: 1.05rem; }
+.dh-tab:hover { color: var(--color-hover1); }
+.dh-tab.active { background: var(--bgbutton); border-color: var(--bgbutton); color: #fff; }
+.dh-card { border: 2px solid #ddd; border-radius: 10px; margin-bottom: 20px; }
+.dh-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background: var(--bgcolor2); border-radius: 8px 8px 0 0; flex-wrap: wrap; gap: 8px; }
+.dh-ma { font-weight: 700; }
+.dh-ngay { color: var(--subtext); font-size: .95rem; }
+.dh-tt { padding: 4px 12px; border-radius: 12px; font-size: .95rem; font-weight: 600; color: #fff; }
+.tt-cho { background: #e69500; } .tt-xacnhan { background: #2a7bd8; } .tt-giao { background: #8a4fd6; }
+.tt-da { background: #2a9d4b; } .tt-huy { background: #888; }
+.dh-sp { display: flex; gap: 12px; align-items: center; padding: 10px 18px; border-bottom: 1px solid #eee; }
+.dh-sp img { width: 60px; border-radius: 6px; }
+.dh-sp .ten { flex: 1; } .dh-sp small { color: var(--subtext); }
+.dh-foot { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; flex-wrap: wrap; gap: 10px; }
+.dh-tong { font-size: 1.2rem; font-weight: 700; color: var(--price-color); }
+.dh-btn { padding: 8px 18px; border: 2px solid var(--bgbutton); border-radius: 6px; background: #fff; color: var(--bgbutton); cursor: pointer; margin-left: 8px; font-size: 1rem; }
+.dh-btn:hover { background: var(--bgbutton); color: #fff; }
+.dh-btn.huy { border-color: #888; color: #666; } .dh-btn.huy:hover { background: #888; color: #fff; }
+@media screen and (max-width: 700px) {
+    .tk-row label { width: 100%; } .tk-error, .tk-row small, .tk-btn { margin-left: 0; }
+    .tk-tab { padding: 10px 10px; font-size: 1rem; }
+}

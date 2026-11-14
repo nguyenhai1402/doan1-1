@@ -1,7 +1,7 @@
-// ===== hoadon.js - Hiển thị hóa đơn của một đơn hàng =====
+// ===== hoadon.js - Hiển thị hóa đơn của một đơn hàng (viết bằng jQuery) =====
 // Lấy mã đơn từ địa chỉ (hoadon.html?id=DH123...) hoặc mã đơn vừa đặt xong (sessionStorage)
 
-document.addEventListener("DOMContentLoaded", function () {
+$(function () {
     const thamSo = new URLSearchParams(window.location.search)
     const maDon = thamSo.get("id") || sessionStorage.getItem("lastOrderId")
 
@@ -22,18 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     //Gán thông tin đơn hàng vào hóa đơn
-    document.getElementById("ma-don").innerText = order.maDon
-    document.getElementById("ngay-dat").innerText = new Date(order.ngayDat).toLocaleString("vi-VN")
+    $("#ma-don").text(order.maDon)
+    $("#ngay-dat").text(new Date(order.ngayDat).toLocaleString("vi-VN"))
 
     //Gán thông tin khách hàng
-    document.getElementById("ho-ten").innerText = order.nguoiNhan.hoTen
-    document.getElementById("email").innerText = order.nguoiNhan.email
-    document.getElementById("sdt").innerText = order.nguoiNhan.sdt
-    document.getElementById("dia-chi").innerText = order.nguoiNhan.diaChi
+    $("#ho-ten").text(order.nguoiNhan.hoTen)
+    $("#email").text(order.nguoiNhan.email)
+    $("#sdt").text(order.nguoiNhan.sdt)
+    $("#dia-chi").text(order.nguoiNhan.diaChi)
 
     // Danh sách sản phẩm trong đơn
     let html = ""
-    order.sanPham.forEach(function (sp) {
+    $.each(order.sanPham, function (i, sp) {
         html += `
             <tr>
                 <td>${sp.ten}<br><small>${sp.mau} / ${sp.size}</small></td>
@@ -42,14 +42,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${tien(sp.gia * sp.soLuong)}</td>
             </tr>`
     })
-    document.getElementById("ds-sp").innerHTML = html
+    $("#ds-sp").html(html)
 
     // Các khoản tiền
-    document.getElementById("tam-tinh").innerText = tien(order.tamTinh)
-    document.getElementById("phi-ship").innerText = order.phiShip === 0 ? "Miễn phí" : tien(order.phiShip)
-    document.getElementById("tien-giam").innerText = "-" + tien(order.tienGiam)
-    document.getElementById("tong-gia").innerText = tien(order.tongTien)
-    document.getElementById("phuong-thuc").innerText = order.phuongThuc
-    document.getElementById("thanh-toan").innerText = order.thanhToan
-    document.getElementById("trang-thai").innerText = order.trangThai
+    $("#tam-tinh").text(tien(order.tamTinh))
+    $("#phi-ship").text(order.phiShip === 0 ? "Miễn phí" : tien(order.phiShip))
+    $("#tien-giam").text("-" + tien(order.tienGiam))
+    $("#tong-gia").text(tien(order.tongTien))
+    $("#phuong-thuc").text(order.phuongThuc)
+    $("#thanh-toan").text(order.thanhToan)
+    $("#trang-thai").text(order.trangThai)
 });

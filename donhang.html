@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đơn hàng của tôi - John Henry & Freelancers</title>
+    <link rel="stylesheet" href="css/cssforall.css">
+    <link rel="stylesheet" href="css/giohang.css">
+    <link rel="stylesheet" href="css/taikhoan.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/store.css">
+</head>
+
+<body>
+    <!-- header -->
+    <header class="row">
+        <div class="header-top row">
+            <div class="header-top-img">
+                <img src="img/img_main/chuong.webp" alt="">
+            </div>
+            <p>MIỄN PHÍ VẬN CHUYỂN ĐƠN HÀNG TỪ 299K</p>
+        </div>
+        <div class="header-mid">
+            <!-- CONTAINER DÙNG ĐỂ CĂN LỀ -->
+            <div class="container row">
+                <a href="index.html" class="header-mid-logo">
+                    <img src="img/img_main/logochinh.jpg" alt="">
+                </a>
+                <div class="header-mid-search">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm">
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+                <!-- Menubar ẩn hiện các danh mục-->
+                <div class="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <div class="header-mid-last">
+                    <div class="location">
+                        <a href="#">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                    </div>
+
+                    <!-- FORM ĐĂNG NHẬP -->
+                    <div class="login">
+                        <p><i class="fa-solid fa-person"></i></p>
+                        <div class="form-dangnhap">
+                            <h2>ĐĂNG NHẬP TÀI KHOẢN
+                                <span class="close">X</span>
+                            </h2>
+                            <p>Nhập email và mật khẩu của bạn:</p>
+                            <input id="loginEmail" type="email" placeholder="Email" required>
+                            <input id="loginPassword" type="password" placeholder="Mật khẩu" required>
+                            <p class="policy">This site is protected by reCAPTCHA and the <br>
+                                Google <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy
+                                </a> and <a href="https://policies.google.com/terms" target="_blank">Terms of Service
+                                </a>apply.</p>
+                            <button id="buttonlogin" type="submit">ĐĂNG NHẬP</button>
+                            <p class="newcustomer">
+                                Khách hàng mới? <a href="taotaikhoan.html" target="_self">Tạo tài khoản</a>
+                            </p>
+                            <p class="misspw">
+                                Quên mật khẩu?
+                                <a href="quenmatkhau.html">Khôi phục mật khẩu</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- END FORM ĐĂNG NHẬP -->
+                    <div class="user-info" style="display: none; position: relative;">
+                        <p id="usernameDisplay"
+                            style="cursor: pointer; font-weight: bold; display:flex;align-items:center"></p>
+                        <div id="logoutOption">
+                            Đăng xuất
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <!-- các danh mục lớn -->
+            <div class="header-bottom">
+                <div class="container row">
+                    <div class="header-bottom-uniformpro">
+                        <a href="index.html" class="cha">TRANG CHỦ</a>
+                    </div>
+                    <div class="header-bottom-newcl">
+                        <div class="cha">
+                            NEW COLLECTION
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <ul class="newcl-sub1">
+                            <li>
+                                <a href="sanphamchonam.html" class="con-1">
+                                    JOHN HENRY
+                                </a>
+                            </li>
+                            <li>
+                                <a href="sanphamchonu.html" class="con-1">
+                                    FREELANCER
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-bottom-jh">
+                        <div class="cha">
+                            JOHN HENRY
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <ul class="jh-sub1">
+                            <li>
+                                <div class="con-1">ÁO NAM</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="jh-sub2-1">
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO POLO</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO SƠ MI</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO THUN</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO LEN</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">ÁO KHOÁC</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">VEST-BLAZER</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="con-1">QUẦN NAM</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="jh-sub2-2">
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN KHAKI</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN JEANS</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN TÂY</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN SORT</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="con-1">PHỤ KIỆN NAM</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="jh-sub2-3">
+                                    <li><a href="sanphamchonam.html" class="con-2">NÓN LƯỠI TRAI</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">MẮT KÍNH CAO CẤP</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">QUẦN LÓT NAM</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">CÀ VẠT</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">THẮT LƯNG</a></li>
+                                    <li><a href="sanphamchonam.html" class="con-2">BÓP-VÍ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sanphamchonam.html" class="con-1">ONLINE ONLY</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-bottom-fl">
+                        <div class="cha">
+                            FREELANCER
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                        <ul class="fl-sub1">
+                            <li><a href="sanphamchonu.html" class="con-1">ĐẦM</a></li>
+                            <li><a href="sanphamchonu.html" class="con-1">CHÂN VÁY</a></li>
+                            <li>
+                                <div class="con-1">ÁO NỮ</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="fl-sub2-1">
+                                    <li><a href="sanphamchonu.html" class="con-2">
+                                            ÁO BLOUSE
+                                        </a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO T-SHIRT</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO SƠ MI</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO POLO</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO BLAZER</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">ÁO LEN</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="con-1">QUẦN NỮ</div>
+                                <i class="fa fa-chevron-right"></i>
+                                <ul class="fl-sub2-2">
+                                    <li><a href="sanphamchonu.html" class="con-2">QUẦN JEAN</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">QUẦN TÂY</a></li>
+                                    <li><a href="sanphamchonu.html" class="con-2">QUẦN SORT</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="sanphamchonu.html" class="con-1">PHỤ KIỆN NỮ</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="header-bottom-blog">
+                        <a href="blog.html" class="cha">BLOG</a>
+                    </div>
+                    <div class="header-bottom-shop">
+                        <a href="#" class="cha">CỬA HÀNG</a>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- end các danh mục lớn -->
+
+    </header>
+    <div class="page-main container can-dang-nhap">
+        <div class="product-nav"><a href="index.html">Trang chủ</a><span>/</span><p>Đơn hàng của tôi</p></div>
+        <h2 class="page-title">ĐƠN HÀNG CỦA TÔI</h2>
+        <div id="donhangBox"></div>
+    </div>
+<footer>
+        <div class="container">
+            <div class="address">
+                <p class="footer-header">THÔNG TIN LIÊN HỆ</p>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-house"></i>
+                        <p>Công ty TNHH T.M.G</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>
+                            172 Nguyễn Trãi, P.Bến Thành, Q1, HCM</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <p>0914 516 446 - 0906 954 368</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>
+                            cskh@duchai-styles.com</p>
+                    </li>
+                </ul>
+                <div class="da-thong-bao">
+                    <img src="img/img_main/dathongbao.webp" alt="">
+                </div>
+            </div>
+            <div class="our-company">
+                <p class="footer-header">
+                    CÔNG TY
+                </p>
+                <ul>
+                    <li>Về chúng tôi</li>
+                    <li>Xu hướng</li>
+                    <li>Liên hệ</li>
+                    <li>Tuyển dụng</li>
+                    <li>Theo dõi đơn hàng</li>
+                    <li>Nhượng quyền</li>
+                    <li>Ưu đãi VIP member</li>
+                </ul>
+            </div>
+            <div class="policy">
+                <p class="footer-header">CHÍNH SÁCH</p>
+                <ul>
+                    <li>Đăng ký thành viên</li>
+                    <li>Hướng dẫn thanh toán</li>
+                    <li>Giao hàng và phí vận chuyển</li>
+                    <li>Chính sách đổi trả</li>
+                    <li>Chính sách bảo mật</li>
+                    <li>Điều khoản và thanh toán</li>
+                </ul>
+            </div>
+            <div class="contact">
+                <p class="footer-header">
+                    KẾT NỐI VỚI CHÚNG TÔI
+                </p>
+                <div class="send-mail">
+                    <input type="email" placeholder="Email">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </div>
+                <div class="social">
+                    <div class="fb-1">
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                            <p>ĐỨC HẢI</p>
+                        </a>
+                    </div>
+                    <div class="fb-2">
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i>
+                            <p>FREELANCER</p>
+                        </a>
+                    </div>
+                    <div class="insta">
+                        <a href="https://www.instagram.com/" target="_blank"><img src="img/img_main/insta.png" alt="">
+                            <p>ĐỨC HẢI</p>
+                        </a>
+                    </div>
+                    <div class="ytb">
+                        <a href="https://www.youtube.com/" target="_blank"><img src="img/img_main/ytb.webp" alt="">
+                            <p>DucHaiStyles</p>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="checkout-methob">
+                    <p>PHƯƠNG THỨC THANH TOÁN</p>
+                    <div class="img">
+                        <img src="img/img_main/mm.webp" alt="">
+                        <img src="img/img_main/vnp.webp" alt="">
+                        <img src="img/img_main/spp.webp" alt="">
+                    </div>
+                </div>
+                <div class="delivery">
+                    <p>ĐỐI TÁC VẬN CHUYỂN</p>
+                    <div class="img">
+                        <img src="img/img_main/nj.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2025 Duc Hai & Freelancer</p>
+        </div>
+    </footer>
+
+    <!-- social va lien he  -->
+    <div class="social-fixed">
+        <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" target="_blank"></a><img src="img/img_main/insta.png" alt="">
+    </div>
+    <div class="contact-fixed">
+        <a href="#"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://www.facebook.com/messages/" target="_blank"><i class="fa-brands fa-facebook-messenger"></i></a>
+        <a href="https://chat.zalo.me/" target="_blank"><img src="img/img_main/zll.webp" alt=""></a>
+    </div>
+    <!-- end social va lien he  -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/jsforall.js"></script>
+    <script src="js/donhang.js"></script>
+
+
+</body>
+
+</html>

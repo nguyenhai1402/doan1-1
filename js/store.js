@@ -1,5 +1,8 @@
-// ===== store.js - Phần dùng chung cho phân hệ khách hàng (nạp TRƯỚC jsforall.js) =====
+// ===== store.js - Phần dùng chung cho phân hệ khách hàng =====
+// Viết bằng jQuery. Thứ tự nạp: jquery -> store.js -> jsforall.js -> file js của từng trang
+// Lưu ý: file này viết dạng object JH chứa nhiều hàm (để các trang gọi chung JH.money(), JH.user()...)
 // Lưu trữ: localStorage (accounts, loggedInUser, cart, wishlist_<email>, orders)
+
 const JH = {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
     set(k, v) { localStorage.setItem(k, JSON.stringify(v)); },
@@ -9,19 +12,16 @@ const JH = {
 
     // ---- Thông báo nhỏ góc màn hình ----
     toast(msg) {
-        const t = document.createElement("div");
-        t.className = "jh-toast"; t.textContent = msg;
-        document.body.appendChild(t);
-        setTimeout(() => t.classList.add("show"), 10);
-        setTimeout(() => { t.classList.remove("show"); setTimeout(() => t.remove(), 300); }, 2200);
+        const $t = $('<div class="jh-toast"></div>').text(msg).appendTo("body");
+        setTimeout(function () { $t.addClass("show"); }, 10);
+        setTimeout(function () { $t.removeClass("show"); setTimeout(function () { $t.remove(); }, 300); }, 2200);
     },
 
     // ---- Bắt buộc đăng nhập (đặt hàng, yêu thích) ----
     requireLogin() {
         if (this.user()) return true;
         alert("Vui lòng đăng nhập để sử dụng chức năng này.");
-        const f = document.querySelector(".form-dangnhap");
-        if (f) f.classList.add("active");
+        $(".form-dangnhap").addClass("active");
         window.scrollTo({ top: 0, behavior: "smooth" });
         return false;
     },
@@ -31,7 +31,7 @@ const JH = {
     addToCart(item) {
         const cart = this.cart();
         item.key = item.id + "|" + item.mau + "|" + item.size;
-        const found = cart.find(c => c.key === item.key);
+        const found = cart.find(function (c) { return c.key === item.key; });
         if (found) found.soLuong += item.soLuong; else cart.push(item);
         this.set("cart", cart); this.refresh();
     },
@@ -42,8 +42,8 @@ const JH = {
     toggleWish(p) {                       // p = {id,ten,gia,anh,link}; trả về true nếu vừa thêm
         if (!this.requireLogin()) return null;
         let list = this.wishlist();
-        const has = list.some(x => x.id === p.id);
-        list = has ? list.filter(x => x.id !== p.id) : list.concat(p);
+        const has = list.some(function (x) { return x.id === p.id; });
+        list = has ? list.filter(function (x) { return x.id !== p.id; }) : list.concat(p);
         this.set(this.wishKey(), list); this.refresh();
         this.toast(has ? "Đã bỏ khỏi yêu thích" : "Đã thêm vào yêu thích ♥");
         return !has;
@@ -51,15 +51,14 @@ const JH = {
 
     // ---- Cập nhật icon + số đếm trên header và trạng thái trái tim ----
     refresh() {
-        const n = this.cart().reduce((s, c) => s + c.soLuong, 0);
-        const cb = document.getElementById("cartBadge"), wb = document.getElementById("wishBadge");
-        if (cb) cb.textContent = n;
-        if (wb) wb.textContent = this.wishlist().length;
-        const ids = this.wishlist().map(x => x.id);
-        document.querySelectorAll("[data-wid]").forEach(el => {
-            const on = ids.includes(el.dataset.wid);
-            const heart = el.matches("i") ? el : el.querySelector("i");
-            heart.className = (on ? "fa-solid" : "fa-regular") + " fa-heart" + (on ? " liked" : "");
+        const n = this.cart().reduce(function (s, c) { return s + c.soLuong; }, 0);
+        $("#cartBadge").text(n);
+        $("#wishBadge").text(this.wishlist().length);
+        const ids = this.wishlist().map(function (x) { return x.id; });
+        $("[data-wid]").each(function () {
+            const on = ids.includes($(this).attr("data-wid"));
+            const $heart = $(this).is("i") ? $(this) : $(this).find("i");
+            $heart.attr("class", (on ? "fa-solid" : "fa-regular") + " fa-heart" + (on ? " liked" : ""));
         });
     },
 
@@ -69,45 +68,46 @@ const JH = {
 
     // Gắn trái tim cho các thẻ .product-item (gọi lại được khi trang vẽ thẻ động)
     bindCards(root) {
-        (root || document).querySelectorAll(".product-item").forEach(card => {
-            const heart = card.querySelector(".item-icon .fa-heart");
-            if (!heart || heart.dataset.wid || !card.querySelector(".item-top img")) return;
-            heart.dataset.wid = JH.cardData(card).id; heart.style.cursor = "pointer";
-            heart.addEventListener("click", () => JH.toggleWish(JH.cardData(card)));
+        $(root || document).find(".product-item").each(function () {
+            const $card = $(this);
+            const $heart = $card.find(".item-icon .fa-heart");
+            if ($heart.length === 0 || $heart.attr("data-wid") || $card.find(".item-top img").length === 0) return;
+            $heart.attr("data-wid", JH.cardData($card).id).css("cursor", "pointer");
+            $heart.on("click", function () { JH.toggleWish(JH.cardData($card)); });
         });
         JH.refresh();
     },
 
     // Đọc thông tin 1 thẻ sản phẩm (.product-item) trên trang danh sách
-    cardData(card) {
-        const img = card.querySelector(".item-top img"), a = card.querySelector(".item-top a");
+    cardData($card) {
+        const $img = $card.find(".item-top img");
         return {
-            id: img.getAttribute("src"),
-            ten: card.querySelector(".item-bottom-describle p").textContent.trim(),
-            gia: this.toNum(card.querySelector(".item-bottom-last p").textContent),
-            anh: img.getAttribute("src"),
-            link: a ? a.getAttribute("href") : ""
+            id: $img.attr("src"),
+            ten: $card.find(".item-bottom-describle p").first().text().trim(),
+            gia: this.toNum($card.find(".item-bottom-last p").first().text()),
+            anh: $img.attr("src"),
+            link: $card.find(".item-top a").attr("href") || ""
         };
     }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+$(function () {
     // 1. Chèn icon Yêu thích + Giỏ hàng vào header (không cần sửa HTML từng trang)
-    const last = document.querySelector(".header-mid-last");
-    if (last) {
-        last.insertAdjacentHTML("afterbegin",
-            '<div class="hd-icon"><a href="yeuthich.html" title="Yêu thích"><i class="fa-regular fa-heart"></i><span class="hd-badge" id="wishBadge">0</span></a></div>' +
-            '<div class="hd-icon"><a href="giohang.html" title="Giỏ hàng"><i class="fa-solid fa-cart-shopping"></i><span class="hd-badge" id="cartBadge">0</span></a></div>');
-    }
-    // 2. Gắn trái tim cho mọi thẻ sản phẩm
+    $(".header-mid-last").prepend(
+        '<div class="hd-icon"><a href="yeuthich.html" title="Yêu thích"><i class="fa-regular fa-heart"></i><span class="hd-badge" id="wishBadge">0</span></a></div>' +
+        '<div class="hd-icon"><a href="giohang.html" title="Giỏ hàng"><i class="fa-solid fa-cart-shopping"></i><span class="hd-badge" id="cartBadge">0</span></a></div>');
+
+    // 2. Menu người dùng (hiện khi rê chuột vào tên): thêm link tài khoản + đơn hàng + nút đăng xuất
+    $("#logoutOption").html('<a href="taikhoan.html">Tài khoản của tôi</a><a href="donhang.html">Đơn hàng của tôi</a><span id="btnLogout">Đăng xuất</span>');
+
+    // 3. Gắn trái tim cho mọi thẻ sản phẩm
     JH.bindCards();
-    // 2b. Tìm kiếm trên header -> timkiem.html?q=...
-    const sInput = document.querySelector(".header-mid-search input"), sBtn = document.querySelector(".header-mid-search a");
-    if (sInput) {
-        const go = () => { const q = sInput.value.trim(); if (q) location.href = "timkiem.html?q=" + encodeURIComponent(q); };
-        sInput.addEventListener("keydown", e => { if (e.key === "Enter") go(); });
-        if (sBtn) sBtn.addEventListener("click", e => { e.preventDefault(); go(); });
+
+    // 4. Tìm kiếm trên header -> timkiem.html?q=...
+    function timKiem() {
+        const q = $(".header-mid-search input").val().trim();
+        if (q) location.href = "timkiem.html?q=" + encodeURIComponent(q);
     }
-    // 3. Hiển thị trạng thái ban đầu
-    JH.refresh();
+    $(".header-mid-search input").on("keydown", function (e) { if (e.key === "Enter") timKiem(); });
+    $(".header-mid-search a").on("click", function (e) { e.preventDefault(); timKiem(); });
 });

@@ -1,7 +1,8 @@
-// ===== thanhtoan.js - Trang đặt hàng (nhận nhiều sản phẩm từ giỏ hàng hoặc "Mua ngay") =====
+// ===== thanhtoan.js - Trang đặt hàng (viết bằng jQuery) =====
+// Nhận nhiều sản phẩm từ giỏ hàng hoặc "Mua ngay".
 // Lưu ý: dùng hàm JH.money() và JH.shipFee() viết sẵn trong store.js (nhớ nạp store.js trước file này)
 
-window.addEventListener("DOMContentLoaded", function () {
+$(function () {
     // Thông báo khi mở trang
     alert("Nhập mã duchaitrian để được giảm giá 10% tổng hàng hóa");
 })
@@ -25,7 +26,7 @@ let maDangDung = ""  // mã giảm giá đang áp dụng
 // Hiển thị các số tiền ở bảng bên phải
 function capNhatTien() {
     tamTinh = 0
-    sanphams.forEach(function (sp) {
+    $.each(sanphams, function (i, sp) {
         tamTinh += sp.gia * sp.soLuong
     })
     phiShip = JH.shipFee(tamTinh)   // từ 300.000đ miễn phí, dưới đó 25.000đ
@@ -41,10 +42,10 @@ function capNhatTien() {
     }
     const tong = tamTinh + phiShip - tienGiam
 
-    document.getElementById("tam-tinh").innerText = tamTinh.toLocaleString("vi-VN")
-    document.getElementById("phi-ship").innerText = phiShip === 0 ? "Miễn phí" : phiShip.toLocaleString("vi-VN") + "đ"
-    document.getElementById("tien-giam").innerText = tienGiam.toLocaleString("vi-VN")
-    document.querySelector(".price-total").innerText = tong.toLocaleString("vi-VN")
+    $("#tam-tinh").text(tamTinh.toLocaleString("vi-VN"))
+    $("#phi-ship").text(phiShip === 0 ? "Miễn phí" : phiShip.toLocaleString("vi-VN") + "đ")
+    $("#tien-giam").text(tienGiam.toLocaleString("vi-VN"))
+    $(".price-total").text(tong.toLocaleString("vi-VN"))
     return tong
 }
 
@@ -57,8 +58,7 @@ if (!user) {
     window.location.href = "giohang.html"
 } else {
     // Chèn từng sản phẩm vào bảng (trước dòng mã giảm giá)
-    const discountRow = document.querySelector(".product-buy .discount")
-    sanphams.forEach(function (sp) {
+    $.each(sanphams, function (i, sp) {
         const html = `
                 <tr class="sanpham">
                     <td>
@@ -72,33 +72,37 @@ if (!user) {
                     <td class="price-root">${sp.gia.toLocaleString("vi-VN")}đ</td>
                 </tr>
             `
-        discountRow.insertAdjacentHTML("beforebegin", html)
+        $(".product-buy .discount").before(html)
     })
     capNhatTien()
 
     // Điền sẵn thông tin khách đã đăng nhập (khách vẫn sửa được)
-    document.getElementById("full-name").value = (user.ho + " " + user.ten).trim()
-    document.getElementById("email").value = user.email
-    document.getElementById("phone").value = user.sdt || ""
+    $("#full-name").val((user.ho + " " + user.ten).trim())
+    $("#email").val(user.email)
+    $("#phone").val(user.sdt || "")
+
+    // Có địa chỉ mặc định trong sổ địa chỉ thì điền luôn (tên và SĐT người nhận lấy theo địa chỉ đó)
+    const diaChiMacDinh = (user.diaChi || []).find(function (d) { return d.macDinh })
+    if (diaChiMacDinh) {
+        $("#full-name").val(diaChiMacDinh.hoTen)
+        $("#phone").val(diaChiMacDinh.sdt)
+        $("#diachi").val(diaChiMacDinh.diaChi)
+    }
 
     // Link điều hướng: đi từ giỏ hàng thì quay lại giỏ hàng
-    const linkNav = document.querySelector(".product-nav a")
-    const linkQuayLai = document.querySelector(".quaylai")
     if (tuGioHang) {
-        linkNav.innerText = "Giỏ hàng"
-        linkNav.href = "giohang.html"
-        linkQuayLai.href = "giohang.html"
+        $(".product-nav a").text("Giỏ hàng").attr("href", "giohang.html")
+        $(".quaylai").attr("href", "giohang.html")
     } else {
-        linkNav.innerText = sanphams[0].ten
-        linkNav.href = sanphams[0].link
-        linkQuayLai.href = sanphams[0].link
+        $(".product-nav a").text(sanphams[0].ten).attr("href", sanphams[0].link)
+        $(".quaylai").attr("href", sanphams[0].link)
     }
 }
 
 // Gắn sự kiện cho nút sử dụng giảm giá
-document.querySelector(".dcuse").addEventListener("click", function (e) {
+$(".dcuse").on("click", function (e) {
     e.preventDefault()
-    const ma = document.getElementById("discount").value.trim().toLowerCase()
+    const ma = $("#discount").val().trim().toLowerCase()
     if (maGiamGia[ma]) {
         maDangDung = ma
         capNhatTien()
@@ -111,23 +115,19 @@ document.querySelector(".dcuse").addEventListener("click", function (e) {
 })
 
 //Kiểm tra sự hợp lệ khi nhập dữ liệu
-document.getElementById("submit-btn").addEventListener("click", function (e) {
+$("#submit-btn").on("click", function (e) {
     e.preventDefault();
 
     let isValid = true;
 
-    const name = document.getElementById("full-name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const address = document.getElementById("diachi").value.trim();
-    const payment = document.getElementById("payment-method")
+    const name = $("#full-name").val().trim();
+    const email = $("#email").val().trim();
+    const phone = $("#phone").val().trim();
+    const address = $("#diachi").val().trim();
+    const payment = $("#payment-method").val()      // chưa chọn thì jQuery trả về null
 
     // Xóa thông báo lỗi cũ
-    document.getElementById("error-fullname").innerText = "";
-    document.getElementById("error-email").innerText = "";
-    document.getElementById("error-phone").innerText = "";
-    document.getElementById("error-address").innerText = "";
-    document.getElementById("error-payment").innerText = "";
+    $("#error-fullname, #error-email, #error-phone, #error-address, #error-payment").text("");
 
     // Regex kiểm tra
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -135,30 +135,30 @@ document.getElementById("submit-btn").addEventListener("click", function (e) {
 
     // Tên
     if (name === "") {
-        document.getElementById("error-fullname").innerText = "Vui lòng nhập họ tên.";
+        $("#error-fullname").text("Vui lòng nhập họ tên.");
         isValid = false;
     }
 
     // Email
     if (!emailRegex.test(email)) {
-        document.getElementById("error-email").innerText = "Email không đúng định dạng.";
+        $("#error-email").text("Email không đúng định dạng.");
         isValid = false;
     }
 
     // SĐT
     if (!phoneRegex.test(phone)) {
-        document.getElementById("error-phone").innerText = "Số điện thoại phải bắt đầu bằng 0 và có đúng 10 chữ số.";
+        $("#error-phone").text("Số điện thoại phải bắt đầu bằng 0 và có đúng 10 chữ số.");
         isValid = false;
     }
 
     // Địa chỉ
     if (address === "") {
-        document.getElementById("error-address").innerText = "Hãy nhập địa chỉ của bạn.";
+        $("#error-address").text("Hãy nhập địa chỉ của bạn.");
         isValid = false;
     }
     // Kiểm tra chọn phương thức thanh toán
-    if (payment.value === "") {
-        document.getElementById("error-payment").innerText = "Vui lòng chọn phương thức thanh toán.";
+    if (!payment) {
+        $("#error-payment").text("Vui lòng chọn phương thức thanh toán.");
         isValid = false;
     }
 
@@ -168,7 +168,7 @@ document.getElementById("submit-btn").addEventListener("click", function (e) {
     // Thanh toán VNPay (giả lập): hộp xác nhận thay cho cổng thanh toán thật
     // (cách làm đơn giản cho đồ án tĩnh; bản thật cần kết nối cổng VNPay phía máy chủ)
     let daThanhToan = false
-    if (payment.value === "vnpay") {
+    if (payment === "vnpay") {
         daThanhToan = confirm("[GIẢ LẬP VNPAY]\nSố tiền: " + capNhatTien().toLocaleString("vi-VN") + "đ\nBấm OK để thanh toán thành công, Cancel để hủy giao dịch.")
         if (!daThanhToan) {
             alert("Giao dịch bị hủy. Đơn hàng chưa được tạo.")
@@ -190,7 +190,7 @@ document.getElementById("submit-btn").addEventListener("click", function (e) {
         maGiamGia: maDangDung,
         tienGiam: tienGiam,
         tongTien: tamTinh + phiShip - tienGiam,
-        phuongThuc: payment.value === "vnpay" ? "VNPay" : "Thanh toán khi nhận hàng",
+        phuongThuc: payment === "vnpay" ? "VNPay" : "Thanh toán khi nhận hàng",
         thanhToan: daThanhToan ? "Đã thanh toán" : "Chưa thanh toán"
     }
 
