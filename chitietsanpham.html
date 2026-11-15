@@ -42,7 +42,7 @@
                 <div class="header-mid-last">
                     <!-- xem vị trí cửa hàng -->
                     <div class="location">
-                        <a href="#">
+                        <a href="cuahang.html">
                             <i class="fa-solid fa-location-dot"></i>
                         </a>
                     </div>
@@ -215,7 +215,7 @@
                     </div>
                     <div class="header-bottom-shop">
                         <!-- menu cấp 1 -->
-                        <a href="#" class="cha">CỬA HÀNG</a>
+                        <a href="cuahang.html" class="cha">CỬA HÀNG</a>
                         <!-- menu cấp 1 -->
                     </div>
 
@@ -227,7 +227,7 @@
 
 
     <!-- Trình bày sản phẩm -->
-    <div class="product-main-container">
+    <div class="product-main-container" data-thuonghieu="John Henry">
         <div class="container">
             <div class="product-nav">
                 <a href="index.html">
@@ -317,6 +317,7 @@
                         <button class="mua-ngay">Mua ngay</button>
                     </div>
                     <p class="ct-wish"><i class="fa-regular fa-heart"></i> Thêm vào yêu thích</p>
+                    <p class="check-kho"><i class="fa-solid fa-store"></i> Kiểm tra tồn kho tại cửa hàng</p>
                 </div>
             </div>
             <!-- end Thông tin của sản phẩm và mục mua sắm -->
@@ -430,6 +431,20 @@
 
     <!--  end Trình bày sản phẩm -->
 
+    <!-- Hộp kiểm tra tồn kho tại cửa hàng (UCXSP04) -->
+    <div class="kho-container">
+        <div class="kho-box">
+            <div class="kho-title"><p>Kiểm tra tồn kho tại cửa hàng</p><span class="kho-close">X</span></div>
+            <p class="kho-bienthe"></p>
+            <div class="kho-loc">
+                <select id="kho-tinh"></select>
+                <select id="kho-quan"></select>
+                <button id="kho-xem">Kiểm tra</button>
+            </div>
+            <div id="kho-ketqua"></div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <div class="address">
@@ -467,7 +482,7 @@
                     <li>Xu hướng</li>
                     <li>Liên hệ</li>
                     <li>Tuyển dụng</li>
-                    <li>Theo dõi đơn hàng</li>
+                    <li><a href="donhang.html">Theo dõi đơn hàng</a></li>
                     <li>Nhượng quyền</li>
                     <li>Ưu đãi VIP member</li>
                 </ul>
@@ -478,7 +493,7 @@
                     <li>Đăng ký thành viên</li>
                     <li>Hướng dẫn thanh toán</li>
                     <li>Giao hàng và phí vận chuyển</li>
-                    <li>Chính sách đổi trả</li>
+                    <li><a href="doihang.html">Chính sách đổi trả</a></li>
                     <li>Chính sách bảo mật</li>
                     <li>Điều khoản và thanh toán</li>
                 </ul>
@@ -551,6 +566,7 @@
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/store.js"></script>
     <script src="js/jsforall.js"></script>
+    <script src="js/stores.js"></script>
     <script src="js/chitietsanpham.js"></script>
     
 

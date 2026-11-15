@@ -58,6 +58,7 @@ function veDonHang() {
                     <span class="dh-tong">${JH.money(o.tongTien)}</span>
                     <button class="dh-btn" data-act="xem" data-ma="${o.maDon}">Xem hóa đơn</button>
                     ${o.trangThai === "Chờ xác nhận" ? '<button class="dh-btn huy" data-act="huy" data-ma="' + o.maDon + '">Hủy đơn</button>' : ""}
+                    ${o.trangThai === "Đã giao" ? '<button class="dh-btn" data-act="doi" data-ma="' + o.maDon + '">Đổi hàng</button>' : ""}
                 </div>
             </div>
         </div>`
@@ -78,6 +79,10 @@ if (!user) {
         const ma = $(this).attr("data-ma")
         if ($(this).attr("data-act") === "xem") {
             window.location.href = "hoadon.html?id=" + ma
+            return
+        }
+        if ($(this).attr("data-act") === "doi") {
+            window.location.href = "doihang.html?id=" + ma
             return
         }
         // Hủy đơn: chỉ được hủy khi đơn còn "Chờ xác nhận"

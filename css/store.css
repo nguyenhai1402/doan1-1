@@ -28,3 +28,48 @@
 /* Menu người dùng sau khi đăng nhập: link tài khoản, đơn hàng, đăng xuất */
 #logoutOption a, #logoutOption span { display: block; color: var(--text-color); padding: 6px 4px; cursor: pointer; font-size: 1rem; white-space: nowrap; }
 #logoutOption a:hover, #logoutOption span:hover { text-decoration: underline; }
+
+/* ===== Hệ thống cửa hàng (cuahang.html) ===== */
+.ch-loc { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px; }
+.ch-loc select { padding: 12px 15px; border: 2px solid #ddd; font-size: 1.1rem; min-width: 220px; background: #fff; }
+.ch-loc select:focus { outline: none; border-color: var(--bgbutton); }
+.ch-item { border: 2px solid #ddd; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px; }
+.ch-item:hover { border-color: var(--bgbutton); }
+.ch-ten { font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; }
+.ch-item p { margin: 4px 0; font-size: 1.1rem; }
+.ch-item i { color: var(--bgbutton); width: 20px; }
+.ch-tag { display: inline-block; font-size: .85rem; padding: 2px 10px; border-radius: 10px; color: #fff; vertical-align: middle; margin-left: 8px; }
+.ch-tag.jh { background: var(--bgbutton); } .ch-tag.fr { background: #6a4fc2; }
+#ch-ketqua { margin-bottom: 60px; }
+
+/* ===== Chính sách đổi hàng (doihang.html) ===== */
+.dh-policy { max-width: 800px; margin: 0 auto 30px; background: var(--bgcolor2); border-radius: 10px; padding: 18px 25px; }
+.dh-policy h3 { color: var(--header-color); margin: 8px 0; }
+.dh-policy ul { margin: 8px 0 12px 22px; list-style: disc; }
+.dh-policy li, .dh-policy p { margin: 6px 0; font-size: 1.1rem; }
+.dh-policy i { color: var(--bgbutton); width: 22px; }
+.tk-panel select { flex: 1; min-width: 200px; padding: 10px; border: 2px solid #ddd; font-size: 1.1rem; background: #fff; }
+
+/* ===== Kiểm tra tồn kho tại cửa hàng (trang chi tiết) ===== */
+.check-kho { margin: 5px 0 15px; font-size: 1.2rem; cursor: pointer; display: block; width: fit-content; }
+.check-kho:hover { color: var(--color-hover1); }
+.kho-container { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, .5); z-index: 1002; }
+.kho-box { background: #fff; width: 600px; max-width: 94%; max-height: 85vh; overflow: auto; margin: 60px auto; border: 4px solid #000; padding-bottom: 20px; }
+.kho-title { background: var(--bgbutton); color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; font-size: 1.3rem; }
+.kho-close { cursor: pointer; font-size: 1.4rem; }
+.kho-close:hover { color: #000; }
+.kho-bienthe { padding: 12px 20px 0; font-weight: 600; }
+.kho-loc { display: flex; gap: 10px; padding: 12px 20px; flex-wrap: wrap; }
+.kho-loc select { flex: 1; min-width: 150px; padding: 10px; border: 2px solid #ddd; font-size: 1rem; }
+.kho-loc button { padding: 10px 22px; border: none; background: var(--bgbutton); color: #fff; font-size: 1rem; cursor: pointer; }
+.kho-loc button:hover { background: var(--header-color); }
+.kho-item { margin: 0 20px 10px; border: 2px solid #ddd; border-radius: 8px; padding: 10px 14px; }
+.kho-item p { margin: 3px 0; }
+.kho-item i { color: var(--bgbutton); width: 20px; }
+.kho-tag { display: inline-block; background: #2a9d4b; color: #fff; font-size: .85rem; padding: 2px 10px; border-radius: 10px; margin-left: 6px; }
+.kho-trong { text-align: center; color: var(--subtext); padding: 20px; font-size: 1.1rem; }
+
+/* ===== Phân trang ở trang danh mục ===== */
+.product-navpage .trang { cursor: pointer; padding: 6px 12px; border: 2px solid #ddd; border-radius: 6px; }
+.product-navpage .trang:hover { color: var(--color-hover1); border-color: var(--color-hover1); }
+.product-navpage .trang.active { background: var(--bgbutton); border-color: var(--bgbutton); color: #fff; }

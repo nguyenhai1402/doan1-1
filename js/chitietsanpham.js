@@ -135,3 +135,55 @@ $(".ct-wish").on("click", function () {
         link: location.pathname.split("/").pop()
     })
 })
+
+
+// ===== Kiểm tra tồn kho tại cửa hàng (UCXSP04) =====
+// Cần nạp stores.js (danh sách cửa hàng và hàm layTonKho). Thương hiệu của sản phẩm lấy ở thuộc tính data-thuonghieu
+const thuongHieuSP = $(".product-main-container").attr("data-thuonghieu")
+
+$(".check-kho").on("click", function () {
+    if (!sizeChon) { JH.toast("Vui lòng chọn kích thước"); return }
+    const mau = $(".color span").first().text().trim()
+    $(".kho-bienthe").text("Màu: " + mau + " / Size: " + sizeChon)
+    const ds = layCuaHang(thuongHieuSP)
+    doDanhSachTinh("#kho-tinh", ds)
+    doDanhSachQuan("#kho-quan", ds, "")
+    $("#kho-ketqua").html("")
+    $(".kho-container").show()
+})
+$(".kho-close").on("click", function () {
+    $(".kho-container").hide()
+})
+// chọn tỉnh thì nạp lại danh sách quận/huyện
+$("#kho-tinh").on("change", function () {
+    doDanhSachQuan("#kho-quan", layCuaHang(thuongHieuSP), $(this).val())
+})
+// bấm Kiểm tra: liệt kê cửa hàng còn hàng của biến thể đang chọn
+$("#kho-xem").on("click", function () {
+    const tinh = $("#kho-tinh").val()
+    const quan = $("#kho-quan").val()
+    if (!tinh) { JH.toast("Vui lòng chọn tỉnh/thành"); return }
+    const mau = $(".color span").first().text().trim()
+
+    const conHang = []
+    $.each(layCuaHang(thuongHieuSP), function (i, ch) {
+        if (ch.tinh !== tinh || (quan && ch.quan !== quan)) return
+        const sl = layTonKho(ch.id, anhYT, mau, sizeChon)    // anhYT: ảnh đầu của sản phẩm, dùng làm mã sản phẩm
+        if (sl > 0) conHang.push({ ch: ch, sl: sl })
+    })
+
+    if (conHang.length === 0) {
+        $("#kho-ketqua").html('<p class="kho-trong">Không còn hàng tại khu vực đã chọn.</p>')
+        return
+    }
+    let html = ""
+    $.each(conHang, function (i, x) {
+        html += `
+        <div class="kho-item">
+            <p><strong>${x.ch.ten}</strong> <span class="kho-tag">Còn hàng (${x.sl})</span></p>
+            <p><i class="fa-solid fa-location-dot"></i> ${x.ch.diaChi}</p>
+            <p><i class="fa-solid fa-phone"></i> ${x.ch.sdt}</p>
+        </div>`
+    })
+    $("#kho-ketqua").html(html)
+})
