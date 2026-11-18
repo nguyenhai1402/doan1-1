@@ -73,3 +73,11 @@
 .product-navpage .trang { cursor: pointer; padding: 6px 12px; border: 2px solid #ddd; border-radius: 6px; }
 .product-navpage .trang:hover { color: var(--color-hover1); border-color: var(--color-hover1); }
 .product-navpage .trang.active { background: var(--bgbutton); border-color: var(--bgbutton); color: #fff; }
+
+/* ===== Thanh phân trang dùng chung (yêu thích, tìm kiếm, cửa hàng) ===== */
+.phan-trang { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; margin: 30px 0 50px; }
+.phan-trang .trang, .phan-trang .trang-mui { min-width: 40px; padding: 7px 12px; text-align: center; border: 2px solid #ddd; border-radius: 6px; cursor: pointer; font-size: 1.1rem; user-select: none; }
+.phan-trang .trang:hover, .phan-trang .trang-mui:hover { color: var(--color-hover1); border-color: var(--color-hover1); }
+.phan-trang .trang.active { background: var(--bgbutton); border-color: var(--bgbutton); color: #fff; cursor: default; }
+.phan-trang .trang-mui.tat { opacity: .35; cursor: default; pointer-events: none; }
+.phan-trang .trang-cham { padding: 0 4px; color: var(--subtext); }

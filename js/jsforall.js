@@ -124,3 +124,18 @@ $("#logoutOption").on("click", "#btnLogout", function () {
 $(".menu-toggle").on("click", function () {
     $(".header-bottom").toggleClass("active");
 });
+
+
+// Đặt khoảng trống phía trên trang đúng bằng chiều cao của header.
+// (header đang cố định nên không chiếm chỗ; chiều cao header đổi theo từng cỡ màn hình nên phải đo lại mỗi lần đổi kích thước)
+function canLeTheoHeader() {
+    if ($("header").length === 0) return
+    $("body").css("padding-top", $("header").outerHeight() + "px")
+}
+canLeTheoHeader()
+$(window).on("load resize", canLeTheoHeader)
+// Chiều cao header còn đổi sau khi trang tải xong (ảnh logo tải muộn, hiện tên người dùng, mở menu...)
+// nên dùng ResizeObserver: trình duyệt tự gọi lại hàm mỗi khi header đổi kích thước (cách làm hơi khác thường, chỉ dùng ở đây)
+if ($("header").length > 0 && window.ResizeObserver) {
+    new ResizeObserver(canLeTheoHeader).observe($("header")[0])
+}

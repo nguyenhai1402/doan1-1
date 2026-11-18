@@ -1,0 +1,63 @@
+/* ===== responsive.css =====
+   File này nạp SAU CÙNG ở mọi trang để chỉnh hiển thị cho các cỡ màn hình phổ biến
+   (điện thoại 360-430px, máy tính bảng 768-1024px, laptop 1280-1440px, màn hình lớn 1920-2560px).
+   Mình không sửa trực tiếp các file css cũ của bạn, mọi chỉnh sửa nằm ở đây và đều có ghi chú. */
+
+/* 1. HEADER: thẻ header cố định nhưng trước đây không có chiều rộng nên chỉ rộng bằng nội dung,
+      màn hình càng rộng càng bị lệch sang trái -> cho rộng 100% màn hình */
+header { width: 100%; left: 0; right: 0; }
+
+/* 2. Khoảng cách phía trên nội dung: JS (jsforall.js) đã đặt padding-top cho body đúng bằng chiều cao header,
+      nên bỏ các khoảng cách "đoán" cố định của từng trang (trước đây bị header che hoặc hở quá nhiều) */
+body { transition: none; }
+.banner-container-img { margin-top: 0; }                    /* index, blog, danh mục: trước là 170px */
+.product-main-container { padding-top: 0; }                 /* chi tiết sản phẩm: trước là 15% - 49% */
+.product-main-container > .container { padding-top: 20px; }
+.blog-container { margin-top: 20px; }                       /* chi tiết bài viết: trước là 200px */
+.taotaikhoan { margin: 20px; padding: 30px 0; }             /* đăng ký: trước là 250px mọi phía */
+.page-main { padding-top: 20px; }                           /* giỏ hàng, yêu thích, tìm kiếm, tài khoản... */
+
+/* 3. Màn hình rất rộng (1920px trở lên): banner không kéo giãn quá cao */
+.banner-container { max-width: 1600px; margin: 0 auto; }
+
+/* 4. Máy tính bảng (701 - 1024px): lưới sản phẩm 3 cột thay vì 2 cột cho đỡ thưa */
+@media screen and (min-width: 701px) and (max-width: 1024px) {
+    .product-container { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* 4b. Thanh menu ngang ở 701 - 768px: các mục không co lại nên mục cuối ("CỬA HÀNG") bị cắt mất -> thu hẹp khoảng đệm */
+@media screen and (min-width: 701px) and (max-width: 768px) {
+    .header-bottom .container { flex-wrap: wrap; justify-content: center; }   /* hết chỗ thì xuống dòng thay vì bị cắt */
+    .header-bottom .container > div { padding: 10px 3px; }
+    .header-bottom .container div a { font-size: 11px; }
+}
+
+/* 5. Trang chi tiết sản phẩm: máy tính bảng và điện thoại xếp ảnh phía trên, thông tin phía dưới */
+@media screen and (max-width: 768px) {
+    .product-detail-container { flex-direction: column; }
+    .product-detail-left, .product-detail-right { width: 100%; }
+    .button-container { width: 100%; }
+    table.product-quantity { width: 50%; }
+}
+@media screen and (max-width: 540px) {
+    .product-detail-right .size > ul { flex-wrap: wrap; gap: 12px; }
+}
+
+/* 6. Điện thoại (700px trở xuống) */
+@media screen and (max-width: 700px) {
+    /* thanh đường dẫn (Trang chủ / Danh mục / Tên sản phẩm): cho xuống dòng thay vì ép chữ "Trang chủ" thành 2 dòng */
+    .product-nav { flex-wrap: wrap; row-gap: 4px; gap: 4px 6px; }
+    .product-nav a, .product-nav span { white-space: nowrap; flex: 0 0 auto; }
+    .product-nav span { margin: 0 2px; }
+    /* hai cụm nút nổi bên phải thu nhỏ lại để không che nội dung */
+    .social-fixed { width: 32px; padding: 6px 2px; border-width: 2px; }
+    .social-fixed i { font-size: 1.1rem; padding: 6px 0; }
+    .contact-fixed { width: 44px; gap: 8px; bottom: 12%; right: 4px; }
+    .contact-fixed img { width: 40px; height: 40px; padding: 6px; }
+    .contact-fixed i { font-size: 1.1rem; padding: 8px; }
+    /* giỏ hàng: tên sản phẩm nhỏ lại cho vừa màn hình điện thoại */
+    .cart-info a { font-size: 1rem; }
+    /* chân trang xếp 1 cột, trước đây 2 cột làm tràn ngang ở màn hình hẹp */
+    footer .container { grid-template-columns: 1fr; }
+    footer .container > div { min-width: 0; }
+}

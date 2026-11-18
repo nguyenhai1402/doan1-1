@@ -46,7 +46,6 @@
 @media screen and (max-width: 900px) {
     .page-main { padding-top: 180px; }
     .cart-wrap { flex-direction: column; } .cart-list, .cart-sum { width: 100%; }
-    .page-main .product-container { grid-template-columns: repeat(2, 1fr); }
 }
 @media screen and (max-width: 600px) {
     .page-main { padding-top: 150px; }

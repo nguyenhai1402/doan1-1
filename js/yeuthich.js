@@ -1,4 +1,8 @@
-// ===== yeuthich.js - Danh sách yêu thích (viết bằng jQuery) =====
+// ===== yeuthich.js - Danh sách yêu thích (viết bằng jQuery), có phân trang: mỗi trang 2 dòng sản phẩm =====
+// Cần nạp phantrang.js trước file này
+
+const soDongMoiTrang = 2
+let trangYT = 1
 
 function renderWish() {
     if (!JH.user()) {
@@ -11,11 +15,19 @@ function renderWish() {
         JH.refresh()
         return
     }
-    let html = '<div class="product-container">'
-    $.each(list, function (i, p) {
+
+    // Vẽ tạm một lưới rỗng để đo số cột hiện tại, rồi tính số sản phẩm mỗi trang = số cột x 2 dòng
+    $("#wishBox").html('<div class="product-container" id="wishGrid"></div>')
+    const moiTrang = laySoCot("#wishGrid") * soDongMoiTrang
+    const tongTrang = Math.ceil(list.length / moiTrang)
+    if (trangYT > tongTrang) trangYT = tongTrang           // xóa hết sản phẩm của trang cuối thì lùi về trang trước
+    const batDau = (trangYT - 1) * moiTrang
+
+    let html = ""
+    $.each(list.slice(batDau, batDau + moiTrang), function (i, p) {
         html += `
         <div class="product-item">
-            <div class="wish-del" data-i="${i}" title="Bỏ yêu thích"><i class="fa-solid fa-xmark"></i></div>
+            <div class="wish-del" data-i="${batDau + i}" title="Bỏ yêu thích"><i class="fa-solid fa-xmark"></i></div>
             <div class="item-top"><a href="${p.link || "#"}"><img src="${p.anh}" alt=""></a></div>
             <div class="item-bottom">
                 <div class="item-bottom-describle"><p>${p.ten}</p></div>
@@ -26,7 +38,8 @@ function renderWish() {
             </div>
         </div>`
     })
-    $("#wishBox").html(html + "</div>")
+    $("#wishGrid").html(html)
+    $("#wishBox").append(htmlPhanTrang(tongTrang, trangYT))
     JH.refresh()
 }
 
@@ -39,4 +52,21 @@ $("#wishBox").on("click", ".wish-del", function () {
     renderWish()
 })
 
+// Bấm số trang
+ganPhanTrang("#wishBox", function (trang) {
+    trangYT = trang
+    renderWish()
+    $("html, body").animate({ scrollTop: 0 }, 300)
+})
+
+// Đổi kích thước màn hình thì số cột đổi theo, vẽ lại cho đúng 2 dòng
+let cotCu = 0
+$(window).on("resize", function () {
+    if ($("#wishGrid").length > 0 && laySoCot("#wishGrid") !== cotCu) {
+        cotCu = laySoCot("#wishGrid")
+        renderWish()
+    }
+})
+
 renderWish()
+cotCu = $("#wishGrid").length > 0 ? laySoCot("#wishGrid") : 0
