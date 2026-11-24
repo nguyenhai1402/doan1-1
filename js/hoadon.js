@@ -16,9 +16,9 @@ $(function () {
         return
     }
 
-    // Hàm đổi số thành dạng 1.000.000đ
+    // Hàm đổi số thành dạng 1.000.000đ (dấu chấm ngăn cách hàng nghìn, triệu)
     function tien(n) {
-        return n.toLocaleString("vi-VN") + "đ"
+        return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ"
     }
 
     //Gán thông tin đơn hàng vào hóa đơn

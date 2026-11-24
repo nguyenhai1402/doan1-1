@@ -130,7 +130,10 @@ $(".menu-toggle").on("click", function () {
 // (header đang cố định nên không chiếm chỗ; chiều cao header đổi theo từng cỡ màn hình nên phải đo lại mỗi lần đổi kích thước)
 function canLeTheoHeader() {
     if ($("header").length === 0) return
-    $("body").css("padding-top", $("header").outerHeight() + "px")
+    const chieuCao = $("header").outerHeight()
+    $("body").css("padding-top", chieuCao + "px")
+    // ghi thêm vào biến CSS --header-h để css (ví dụ chiều cao banner) dùng được
+    document.documentElement.style.setProperty("--header-h", chieuCao + "px")
 }
 canLeTheoHeader()
 $(window).on("load resize", canLeTheoHeader)

@@ -32,7 +32,7 @@ function renderWish() {
             <div class="item-bottom">
                 <div class="item-bottom-describle"><p>${p.ten}</p></div>
                 <div class="item-bottom-last">
-                    <p>${JH.toNum(p.gia).toLocaleString("vi-VN")}<span>đ</span></p>
+                    <p>${JH.so(JH.toNum(p.gia))}<span>đ</span></p>
                     <div class="item-icon"><a href="${p.link || "#"}"><i class="fa-solid fa-cart-shopping"></i></a></div>
                 </div>
             </div>

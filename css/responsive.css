@@ -10,12 +10,27 @@ header { width: 100%; left: 0; right: 0; }
 /* 2. Khoảng cách phía trên nội dung: JS (jsforall.js) đã đặt padding-top cho body đúng bằng chiều cao header,
       nên bỏ các khoảng cách "đoán" cố định của từng trang (trước đây bị header che hoặc hở quá nhiều) */
 body { transition: none; }
-.banner-container-img { margin-top: 0; }                    /* index, blog, danh mục: trước là 170px */
 .product-main-container { padding-top: 0; }                 /* chi tiết sản phẩm: trước là 15% - 49% */
 .product-main-container > .container { padding-top: 20px; }
 .blog-container { margin-top: 20px; }                       /* chi tiết bài viết: trước là 200px */
 .taotaikhoan { margin: 20px; padding: 30px 0; }             /* đăng ký: trước là 250px mọi phía */
 .page-main { padding-top: 20px; }                           /* giỏ hàng, yêu thích, tìm kiếm, tài khoản... */
+
+/* 2b. BANNER (index, blog, danh mục): thu nhỏ để luôn lộ ra một phần nội dung phía dưới (gợi ý cho khách kéo xuống),
+       và cách header 20px.
+   - Chiều cao = nhỏ nhất của: 48% chiều rộng (tỉ lệ ảnh gốc), 768px (banner tối đa 1600px rộng),
+     hoặc phần còn lại của màn hình sau khi trừ header, khoảng cách 20px và 110px "lộ nội dung bên dưới"
+   - var(--header-h) là chiều cao header do jsforall.js đo; min()/max() là hàm CSS có sẵn trong các trình duyệt hiện nay
+   - Ảnh dùng object-fit: cover nên khi banner thấp hơn ảnh sẽ được cắt bớt mép trên/dưới chứ không bị méo */
+.banner-container-img {
+    margin-top: 20px;
+    padding-top: 0;                 /* trước đây giữ tỉ lệ bằng padding-top: 48%, nay dùng height */
+    height: min(48vw, 768px, max(220px, calc(100vh - var(--header-h, 170px) - 20px - 110px)));
+}
+.banner-container-img img { object-fit: cover; object-position: center; }
+@media screen and (max-width: 700px) {      /* điện thoại: banner cao hơn một chút (tỉ lệ 70%) */
+    .banner-container-img { height: min(70vw, max(200px, calc(100vh - var(--header-h, 170px) - 20px - 110px))); }
+}
 
 /* 3. Màn hình rất rộng (1920px trở lên): banner không kéo giãn quá cao */
 .banner-container { max-width: 1600px; margin: 0 auto; }

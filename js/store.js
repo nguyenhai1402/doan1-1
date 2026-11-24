@@ -6,7 +6,9 @@
 const JH = {
     get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v === null ? d : v; } catch (e) { return d; } },
     set(k, v) { localStorage.setItem(k, JSON.stringify(v)); },
-    money(n) { return Number(n).toLocaleString("vi-VN") + "đ"; },
+    // Định dạng tiền Việt: dấu chấm ngăn cách hàng nghìn, hàng triệu. Ví dụ 1505731 -> 1.505.731
+    so(n) { return String(Math.round(Number(n))).replace(/\B(?=(\d{3})+(?!\d))/g, "."); },
+    money(n) { return this.so(n) + "đ"; },
     toNum(s) { return parseInt(String(s).replace(/[^0-9]/g, "")) || 0; },
     user() { return this.get("loggedInUser", null); },
 

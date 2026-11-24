@@ -42,10 +42,10 @@ function capNhatTien() {
     }
     const tong = tamTinh + phiShip - tienGiam
 
-    $("#tam-tinh").text(tamTinh.toLocaleString("vi-VN"))
-    $("#phi-ship").text(phiShip === 0 ? "Miễn phí" : phiShip.toLocaleString("vi-VN") + "đ")
-    $("#tien-giam").text(tienGiam.toLocaleString("vi-VN"))
-    $(".price-total").text(tong.toLocaleString("vi-VN"))
+    $("#tam-tinh").text(JH.so(tamTinh))
+    $("#phi-ship").text(phiShip === 0 ? "Miễn phí" : JH.money(phiShip))
+    $("#tien-giam").text(JH.so(tienGiam))
+    $(".price-total").text(JH.so(tong))
     return tong
 }
 
@@ -69,7 +69,7 @@ if (!user) {
                         <h6 class="name">${sp.ten}</h6>
                         <span class="color">${sp.mau} / ${sp.size}</span>
                     </td>
-                    <td class="price-root">${sp.gia.toLocaleString("vi-VN")}đ</td>
+                    <td class="price-root">${JH.money(sp.gia)}</td>
                 </tr>
             `
         $(".product-buy .discount").before(html)
@@ -169,7 +169,7 @@ $("#submit-btn").on("click", function (e) {
     // (cách làm đơn giản cho đồ án tĩnh; bản thật cần kết nối cổng VNPay phía máy chủ)
     let daThanhToan = false
     if (payment === "vnpay") {
-        daThanhToan = confirm("[GIẢ LẬP VNPAY]\nSố tiền: " + capNhatTien().toLocaleString("vi-VN") + "đ\nBấm OK để thanh toán thành công, Cancel để hủy giao dịch.")
+        daThanhToan = confirm("[GIẢ LẬP VNPAY]\nSố tiền: " + JH.so(capNhatTien()) + "đ\nBấm OK để thanh toán thành công, Cancel để hủy giao dịch.")
         if (!daThanhToan) {
             alert("Giao dịch bị hủy. Đơn hàng chưa được tạo.")
             return

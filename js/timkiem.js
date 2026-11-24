@@ -40,7 +40,7 @@ function veKetQua() {
             <div class="item-bottom">
                 <div class="item-bottom-describle"><p>${p.ten}</p></div>
                 <div class="item-bottom-last">
-                    <p>${p.gia.toLocaleString("vi-VN")}<span>đ</span></p>
+                    <p>${JH.so(p.gia)}<span>đ</span></p>
                     <div class="item-icon"><i class="fa-regular fa-heart"></i><a href="${p.link}"><i class="fa-solid fa-cart-shopping"></i></a></div>
                 </div>
             </div>
