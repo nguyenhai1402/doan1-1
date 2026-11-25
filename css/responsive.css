@@ -16,20 +16,28 @@ body { transition: none; }
 .taotaikhoan { margin: 20px; padding: 30px 0; }             /* đăng ký: trước là 250px mọi phía */
 .page-main { padding-top: 20px; }                           /* giỏ hàng, yêu thích, tìm kiếm, tài khoản... */
 
-/* 2b. BANNER (index, blog, danh mục): thu nhỏ để luôn lộ ra một phần nội dung phía dưới (gợi ý cho khách kéo xuống),
-       và cách header 20px.
-   - Chiều cao = nhỏ nhất của: 48% chiều rộng (tỉ lệ ảnh gốc), 768px (banner tối đa 1600px rộng),
-     hoặc phần còn lại của màn hình sau khi trừ header, khoảng cách 20px và 110px "lộ nội dung bên dưới"
-   - var(--header-h) là chiều cao header do jsforall.js đo; min()/max() là hàm CSS có sẵn trong các trình duyệt hiện nay
-   - Ảnh dùng object-fit: cover nên khi banner thấp hơn ảnh sẽ được cắt bớt mép trên/dưới chứ không bị méo */
+/* 2b. BANNER (index, blog, danh mục): thu nhỏ theo chiều dọc để luôn lộ ra một phần nội dung phía dưới
+       (gợi ý cho khách biết có thể kéo xuống), và cách header 40px.
+   Chiều cao banner = số NHỎ NHẤT trong các giá trị sau:
+     - 48vw  : đúng tỉ lệ ảnh gốc (chiều cao = 48% chiều rộng)
+     - 768px : giới hạn khi màn hình rất rộng (banner tối đa 1600px rộng)
+     - var(--banner-vh) : không quá một nửa chiều cao cửa sổ trình duyệt  <-- CHỈNH SỐ NÀY nếu muốn banner thấp/cao hơn
+     - phần còn lại của cửa sổ sau khi trừ header, khoảng cách và vùng lộ nội dung (--banner-lo)
+   var(--header-h) là chiều cao header do jsforall.js đo; min()/max() là hàm CSS có sẵn trong các trình duyệt hiện nay.
+   Ảnh dùng object-fit: cover nên khi banner thấp hơn ảnh sẽ được cắt bớt mép trên/dưới chứ không bị méo. */
+:root {
+    --banner-vh: 50vh;        /* banner cao tối đa bằng 50% chiều cao cửa sổ */
+    --banner-gap: 40px;       /* khoảng cách giữa header và banner */
+    --banner-lo: 160px;       /* phần nội dung bên dưới tối thiểu phải lộ ra */
+}
 .banner-container-img {
-    margin-top: 20px;
-    padding-top: 0;                 /* trước đây giữ tỉ lệ bằng padding-top: 48%, nay dùng height */
-    height: min(48vw, 768px, max(220px, calc(100vh - var(--header-h, 170px) - 20px - 110px)));
+    margin-top: var(--banner-gap);
+    padding-top: 0;           /* trước đây giữ tỉ lệ bằng padding-top: 48%, nay dùng height */
+    height: min(48vw, 768px, var(--banner-vh), max(200px, calc(100vh - var(--header-h, 170px) - var(--banner-gap) - var(--banner-lo))));
 }
 .banner-container-img img { object-fit: cover; object-position: center; }
-@media screen and (max-width: 700px) {      /* điện thoại: banner cao hơn một chút (tỉ lệ 70%) */
-    .banner-container-img { height: min(70vw, max(200px, calc(100vh - var(--header-h, 170px) - 20px - 110px))); }
+@media screen and (max-width: 700px) {      /* điện thoại: tỉ lệ 70% chiều rộng, vẫn không quá 50% chiều cao cửa sổ */
+    .banner-container-img { height: min(70vw, var(--banner-vh), max(180px, calc(100vh - var(--header-h, 170px) - var(--banner-gap) - 120px))); }
 }
 
 /* 3. Màn hình rất rộng (1920px trở lên): banner không kéo giãn quá cao */

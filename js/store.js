@@ -93,7 +93,23 @@ const JH = {
     }
 };
 
+// Tự định dạng lại giá đang hiển thị (thẻ sản phẩm, giá ở trang chi tiết) thành dạng 1.505.731
+// kể cả khi trong HTML bạn ghi giá thô như 900000 hay 900,000 (ví dụ khi thêm sản phẩm mới).
+// Chỉ sửa phần chữ là số, giữ nguyên chữ "đ" nằm trong thẻ <span>.
+function chuanHoaGia(selector) {
+    $(selector).each(function () {
+        $(this).contents().filter(function () {
+            return this.nodeType === 3 && /\d/.test(this.nodeValue)     // nodeType 3 = đoạn chữ thuần
+        }).each(function () {
+            this.nodeValue = JH.so(JH.toNum(this.nodeValue))
+        })
+    })
+}
+
 $(function () {
+    // 0. Chuẩn hóa giá hiển thị
+    chuanHoaGia(".item-bottom-last > p, .product-detail-right .price")
+
     // 1. Chèn icon Yêu thích + Giỏ hàng vào header (không cần sửa HTML từng trang)
     $(".header-mid-last").prepend(
         '<div class="hd-icon"><a href="yeuthich.html" title="Yêu thích"><i class="fa-regular fa-heart"></i><span class="hd-badge" id="wishBadge">0</span></a></div>' +
