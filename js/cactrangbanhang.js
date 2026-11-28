@@ -5,7 +5,8 @@ let trangHienTai = 1
 
 const $danhSach = $(".product-boy-girl .product-container")
 let cacThe = $danhSach.children(".product-item").get()      // mảng các thẻ sản phẩm
-const thuTuGoc = cacThe.slice()                            // nhớ thứ tự ban đầu ("Mới nhất")
+const thuTuGoc = cacThe.slice()
+$(".product-main-header p span").first().text(cacThe.length)        // cập nhật dòng "Có N sản phẩm" sau khi gỡ sản phẩm đã ẩn                            // nhớ thứ tự ban đầu ("Mới nhất")
 
 // Giá của một thẻ sản phẩm
 function giaCuaThe(the) {

@@ -64,6 +64,20 @@ const JH = {
         });
     },
 
+    // Sản phẩm bị quản trị ẩn hoặc xóa? (dữ liệu "products" và "deletedProducts" do phân hệ quản trị tạo ra)
+    daAn(id) {
+        if (this.get("deletedProducts", []).indexOf(id) !== -1) return true;
+        const sp = this.get("products", []).find(function (s) { return s.id === id; });
+        return !!sp && sp.trangThai === "Ẩn";
+    },
+    // Gỡ khỏi trang các thẻ sản phẩm đã bị ẩn / xóa
+    anTheDaAn() {
+        $(".product-item").each(function () {
+            const id = $(this).find(".item-top img").attr("src");
+            if (id && JH.daAn(id)) $(this).remove();
+        });
+    },
+
     // Phí vận chuyển: miễn phí từ 300.000đ, dưới mức đó 25.000đ
     SHIP_FREE: 300000, SHIP_FEE: 25000,
     shipFee(sub) { return sub >= this.SHIP_FREE || sub === 0 ? 0 : this.SHIP_FEE; },
@@ -92,6 +106,8 @@ const JH = {
         };
     }
 };
+
+JH.anTheDaAn()    // chạy ngay (trước các file sắp xếp/phân trang) để thẻ đã ẩn không lọt vào danh sách
 
 // Tự định dạng lại giá đang hiển thị (thẻ sản phẩm, giá ở trang chi tiết) thành dạng 1.505.731
 // kể cả khi trong HTML bạn ghi giá thô như 900000 hay 900,000 (ví dụ khi thêm sản phẩm mới).

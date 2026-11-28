@@ -11,6 +11,7 @@ $(".header-mid-search input").val(q)
 
 const tuKhoa = boDau(q).split(/\s+/).filter(Boolean)
 const kq = tuKhoa.length === 0 ? [] : PRODUCTS.filter(function (p) {
+    if (JH.daAn(p.id)) return false              // bỏ sản phẩm quản trị đã ẩn hoặc xóa
     const text = boDau(p.ten + " " + p.thuongHieu)
     // sản phẩm phải chứa tất cả từ khóa
     return tuKhoa.every(function (k) { return text.includes(k) })

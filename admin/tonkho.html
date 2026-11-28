@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tồn kho - Quản trị</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="admincss/qt-admin.css">
+</head>
+
+<body>
+    <div id="noiDungTrang">
+        <div class="qt-card">
+            <div class="row g-2 align-items-end">
+                <div class="col-md-5"><label class="form-label">Tìm theo tên sản phẩm hoặc SKU</label><input type="text" class="form-control" id="tkTim" placeholder="Nhập từ khóa..."></div>
+                <div class="col-md-4 col-6"><label class="form-label">Danh mục</label><select class="form-select" id="tkLocDM"></select></div>
+                <div class="col-md-3 col-6"><label class="form-label">Tình trạng</label>
+                    <select class="form-select" id="tkLocTT"><option value="">Tất cả</option><option>Còn hàng</option><option>Sắp hết</option><option>Hết hàng</option></select></div>
+            </div>
+        </div>
+        <div class="qt-card">
+            <div class="table-responsive"><table class="table table-hover align-middle mb-2">
+                <thead><tr><th>Sản phẩm</th><th class="d-none d-md-table-cell">SKU</th><th class="d-none d-sm-table-cell">Màu</th><th>Size</th><th class="text-end">Tồn</th><th>Tình trạng</th><th class="text-end">Thao tác</th></tr></thead>
+                <tbody id="tkBang"></tbody>
+            </table></div>
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2"><span class="text-secondary small" id="tkTong"></span><div id="tkTrang"></div></div>
+        </div>
+
+        <!-- Điều chỉnh tồn kho (UCQLTK02) -->
+        <div class="modal fade" id="modalDC" tabindex="-1" data-bs-backdrop="static"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Điều chỉnh tồn kho</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <p id="dcThongTin" class="mb-3"></p>
+                <div class="mb-3"><label class="form-label">Số lượng điều chỉnh *</label><input type="number" class="form-control" id="dcSL" placeholder="Số dương để tăng, số âm để giảm (ví dụ 10 hoặc -3)">
+                    <div class="form-text" id="dcSau"></div></div>
+                <div class="mb-3"><label class="form-label">Lý do *</label>
+                    <select class="form-select" id="dcLyDo"><option>Nhập hàng</option><option>Kiểm kê</option><option>Hàng lỗi</option><option>Khác</option></select></div>
+                <div class="qt-loi" id="dcLoi"></div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button><button class="btn btn-primary" id="dcLuu">Lưu</button></div>
+        </div></div></div>
+
+        <!-- Lịch sử điều chỉnh (UCQLTK03) -->
+        <div class="modal fade" id="modalLS" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-scrollable"><div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Lịch sử điều chỉnh tồn kho</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <p id="lsThongTin" class="fw-semibold"></p>
+                <div class="row g-2 mb-3">
+                    <div class="col-sm-4"><label class="form-label">Từ ngày</label><input type="date" class="form-control form-control-sm" id="lsTu"></div>
+                    <div class="col-sm-4"><label class="form-label">Đến ngày</label><input type="date" class="form-control form-control-sm" id="lsDen"></div>
+                    <div class="col-sm-4"><label class="form-label">Người thực hiện</label><select class="form-select form-select-sm" id="lsNguoi"></select></div>
+                </div>
+                <div class="table-responsive" id="lsBang"></div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-outline-secondary" data-bs-dismiss="modal">Đóng</button></div>
+        </div></div></div>
+    </div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/products.js"></script>
+    <script src="adminjs/qt-data.js"></script>
+    <script src="adminjs/qt-common.js"></script>
+    <script src="adminjs/qt-tonkho.js"></script>
+</body>
+
+</html>
